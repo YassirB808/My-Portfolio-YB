@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, Code2 } from 'lucide-react';
+import { Github, Code2 } from 'lucide-react';
 
 const projectsData = [
   {
@@ -42,9 +42,16 @@ const projectsData = [
 const Projects = () => {
   const fadeInUp = {
     initial: { opacity: 0, y: 15 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] }
+    whileInView: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] }
+    }
+  };
+
+  const cardHover = {
+    y: -5,
+    transition: { type: "spring", stiffness: 300, damping: 20 }
   };
 
   return (
@@ -59,19 +66,26 @@ const Projects = () => {
           <motion.div variants={fadeInUp} className="inline-block px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-md mb-6 shadow-sm">
             <h2 className="text-[9px] uppercase tracking-widest font-bold text-blue-400">My Portfolio</h2>
           </motion.div>
-          <motion.h3 variants={fadeInUp} transition={{ delay: 0.1 }} className="text-4xl md:text-5xl font-bold text-white leading-tight">Featured Projects</motion.h3>
+          <motion.h3 variants={fadeInUp} transition={{ delay: 0.05 }} className="text-4xl md:text-5xl font-bold text-white leading-tight">Featured Projects</motion.h3>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projectsData.map((project, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              variants={{
+                initial: { opacity: 0, y: 20 },
+                whileInView: { 
+                  opacity: 1, 
+                  y: 0,
+                  transition: { duration: 0.5, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] }
+                }
+              }}
+              initial="initial"
+              whileInView="whileInView"
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ y: -5, scale: 1.01 }}
-              className="group relative bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500/30 transition-all duration-300 shadow-xl"
+              whileHover={cardHover}
+              className="group relative bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500/30 transition-colors duration-300 shadow-xl"
             >
               <div className={`h-32 bg-gradient-to-br ${project.color} opacity-10 group-hover:opacity-20 transition-all duration-500 flex items-center justify-center`}>
                 <Code2 size={48} className="text-white opacity-20 group-hover:scale-110 transition-transform duration-500" />
@@ -85,7 +99,7 @@ const Projects = () => {
                         href={project.githubLink}
                         target="_blank"
                         rel="noreferrer"
-                        whileHover={{ scale: 1.1, y: -2 }}
+                        whileHover={{ scale: 1.1 }}
                         className="text-slate-400 hover:text-white bg-slate-950 p-2 rounded-lg border border-slate-800 hover:border-blue-500/30 transition-all"
                     >
                       <Github size={18} />
