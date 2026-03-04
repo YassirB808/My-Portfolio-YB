@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { Briefcase, GraduationCap, MapPin, Calendar, Building2, School } from 'lucide-react';
+import { Briefcase, GraduationCap, MapPin, Calendar } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 import ddsLogo from '../assets/digital_data_service.png';
 import inseaLogo from '../assets/INSEA_logo.png';
@@ -7,57 +8,51 @@ import inptLogo from '../assets/Logo_inpt.PNG';
 import fsrLogo from '../assets/fsr_logo.jpg';
 
 const Experience = () => {
-  const education = [
+  const { t } = useLanguage();
+  
+  const timelineItems = [
     {
       type: 'edu',
-      title: "M.Sc. in IT and Intelligent Systems",
-      institution: 'National Institute of Statistics and Applied Economics (INSEA)',
+      title: t.experience.edu.msc.title,
+      institution: t.experience.edu.msc.inst,
       location: 'Rabat, Morocco',
       period: '2025 - Ongoing',
       logo: inseaLogo,
       isImage: true,
-      description: 'Focused on IT, Intelligent Systems, and smart system design.'
-    }
-  ];
-
-  const experiences = [
+      description: t.experience.edu.msc.desc
+    },
     {
       type: 'work',
-      title: 'Frontend and UI Design Intern',
-      company: 'Digital Data Service',
+      title: t.experience.work.dds.title,
+      company: t.experience.work.dds.company,
       location: 'Rabat, Morocco',
       period: 'Aug 2025 - Sep 2025',
       logo: ddsLogo,
       isImage: true,
-      description: 'Built the frontend architecture for Archix-Base using React, focusing on scalability and performance. Delivered key functionalities including the user dashboard, complex navigation, secure authentication, and document management.',
+      description: t.experience.work.dds.desc,
       tags: ['React', 'UI/UX', 'Architecture', 'Dashboard']
-    }
-  ];
-
-  const pastEducation = [
+    },
     {
       type: 'edu',
-      title: "1st Year Master's in IoT and Big Data",
-      institution: 'National Institute of Posts and Telecommunications (INPT)',
+      title: t.experience.edu.m1.title,
+      institution: t.experience.edu.m1.inst,
       location: 'Rabat, Morocco',
       period: '2024 - 2025',
       logo: inptLogo,
       isImage: true,
-      description: 'Specialized in IoT, Big Data analytics, cloud systems, and data engineering.'
+      description: t.experience.edu.m1.desc
     },
     {
       type: 'edu',
-      title: 'B.Sc. in Electronics, IT and Robotics',
-      institution: 'Faculty of Sciences of Rabat (FSR)',
+      title: t.experience.edu.bsc.title,
+      institution: t.experience.edu.bsc.inst,
       location: 'Rabat, Morocco',
       period: '2021 - 2024',
       logo: fsrLogo,
       isImage: true,
-      description: 'Specialized in embedded systems, Arduino, sensor electronics, full-stack dev, and 3D modeling.'
+      description: t.experience.edu.bsc.desc
     }
   ];
-
-  const timelineItems = [...education, ...experiences, ...pastEducation];
 
   const standardTransition = { duration: 0.5, ease: [0.22, 1, 0.36, 1] };
   const fadeInUp = {
@@ -77,13 +72,12 @@ const Experience = () => {
             className="text-center mb-16"
         >
           <motion.div variants={fadeInUp} className="inline-block px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-md mb-6 shadow-sm">
-            <h2 className="text-[9px] uppercase tracking-widest font-bold text-blue-400 uppercase">My Journey</h2>
+            <h2 className="text-[9px] uppercase tracking-widest font-bold text-blue-400 uppercase">{t.experience.badge}</h2>
           </motion.div>
-          <motion.h3 variants={fadeInUp} transition={{ ...standardTransition, delay: 0.05 }} className="text-4xl md:text-5xl font-bold text-white leading-tight">Career & Education</motion.h3>
+          <motion.h3 variants={fadeInUp} transition={{ ...standardTransition, delay: 0.05 }} className="text-4xl md:text-5xl font-bold text-white leading-tight">{t.experience.title}</motion.h3>
         </motion.div>
 
         <div className="relative">
-          {/* Central Line */}
           <div className="absolute left-0 md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-[1px] bg-slate-800 rounded-full"></div>
 
           <div className="space-y-16">
@@ -97,13 +91,11 @@ const Experience = () => {
                 transition={{ ...standardTransition, delay: 0.1 }}
                 className={`relative flex flex-col md:flex-row gap-6 md:gap-0 ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
               >
-                {/* Timeline Point */}
                 <div className="absolute left-0 md:left-1/2 md:-translate-x-1/2 top-0 w-8 h-8 bg-slate-950 border border-slate-700 rounded-full z-10 flex items-center justify-center shadow-lg group">
                   <div className="absolute inset-0 bg-blue-500/20 rounded-full scale-0 group-hover:scale-100 transition-transform duration-500"></div>
                   {item.type === 'work' ? <Briefcase size={14} className="text-blue-500 relative z-10" /> : <GraduationCap size={14} className="text-blue-500 relative z-10" />}
                 </div>
 
-                {/* Content Card */}
                 <div className={`md:w-1/2 ${idx % 2 === 0 ? 'md:pl-12' : 'md:pr-12'}`}>
                   <motion.div 
                     whileHover={{ y: -5 }}

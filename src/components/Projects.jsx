@@ -1,45 +1,48 @@
 import { motion } from 'framer-motion';
 import { Github, Code2 } from 'lucide-react';
-
-const projectsData = [
-  {
-    title: "NeuroscanAI",
-    description: "A medical web application utilizing the YOLOv8n model to automatically detect brain tumors in MRI scans with real-time predictions at 81% accuracy.",
-    techStack: ["FastAPI", "YOLOv8", "OpenCV", "Flask", "Jupyter", "Chart.js"],
-    githubLink: "https://github.com/YassirB808",
-    color: "from-blue-600 to-indigo-600"
-  },
-  {
-    title: "Mindspark",
-    description: "A real-time multiplayer trivia game enabling seamless live competition between users with a fully responsive front-end.",
-    techStack: ["Django", "WebSocket", "Channels", "Bootstrap", "SQLite"],
-    githubLink: "https://github.com/YassirB808",
-    color: "from-indigo-600 to-purple-600"
-  },
-  {
-    title: "Archix-Frontend",
-    description: "Frontend architecture repository focusing on scalability, performance, and modern UI design principles.",
-    techStack: ["TypeScript", "React", "TailwindCSS"],
-    githubLink: "https://github.com/YassirB808",
-    color: "from-blue-400 to-cyan-400"
-  },
-  {
-    title: "AQI-MONITORING",
-    description: "Air quality monitoring application providing real-time environmental data visualization.",
-    techStack: ["Ubidots", "Flask", "HTML", "Sensors"],
-    githubLink: "https://github.com/YassirB808",
-    color: "from-emerald-600 to-teal-600"
-  },
-  {
-    title: "Handwritten Recognition",
-    description: "Machine learning model for character recognition utilizing advanced neural network architectures.",
-    techStack: ["Jupyter", "TensorFlow", "Scikit-learn"],
-    githubLink: "https://github.com/YassirB808",
-    color: "from-orange-600 to-red-600"
-  }
-];
+import { useLanguage } from '../context/LanguageContext';
 
 const Projects = () => {
+  const { t } = useLanguage();
+
+  const projectsData = [
+    {
+      title: "NeuroscanAI",
+      description: t.projects.items.neuroscan,
+      techStack: ["FastAPI", "YOLOv8", "OpenCV", "Flask", "Jupyter", "Chart.js"],
+      githubLink: "https://github.com/YassirB808",
+      color: "from-blue-600 to-indigo-600"
+    },
+    {
+      title: "Mindspark",
+      description: t.projects.items.mindspark,
+      techStack: ["Django", "WebSocket", "Channels", "Bootstrap", "SQLite"],
+      githubLink: "https://github.com/YassirB808",
+      color: "from-indigo-600 to-purple-600"
+    },
+    {
+      title: "Archix-Frontend",
+      description: t.projects.items.archix,
+      techStack: ["TypeScript", "React", "TailwindCSS"],
+      githubLink: "https://github.com/YassirB808",
+      color: "from-blue-400 to-cyan-400"
+    },
+    {
+      title: "AQI-MONITORING",
+      description: t.projects.items.aqi,
+      techStack: ["Ubidots", "Flask", "HTML", "Sensors"],
+      githubLink: "https://github.com/YassirB808",
+      color: "from-emerald-600 to-teal-600"
+    },
+    {
+      title: "Handwritten Recognition",
+      description: t.projects.items.handwritten,
+      techStack: ["Jupyter", "TensorFlow", "Scikit-learn"],
+      githubLink: "https://github.com/YassirB808",
+      color: "from-orange-600 to-red-600"
+    }
+  ];
+
   const fadeInUp = {
     initial: { opacity: 0, y: 15 },
     whileInView: { 
@@ -64,9 +67,9 @@ const Projects = () => {
             className="text-center mb-16"
         >
           <motion.div variants={fadeInUp} className="inline-block px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-md mb-6 shadow-sm">
-            <h2 className="text-[9px] uppercase tracking-widest font-bold text-blue-400">My Portfolio</h2>
+            <h2 className="text-[9px] uppercase tracking-widest font-bold text-blue-400">{t.projects.badge}</h2>
           </motion.div>
-          <motion.h3 variants={fadeInUp} transition={{ delay: 0.05 }} className="text-4xl md:text-5xl font-bold text-white leading-tight">Featured Projects</motion.h3>
+          <motion.h3 variants={fadeInUp} transition={{ delay: 0.05 }} className="text-4xl md:text-5xl font-bold text-white leading-tight">{t.projects.title}</motion.h3>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

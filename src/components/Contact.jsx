@@ -1,23 +1,26 @@
 import { motion } from 'framer-motion';
 import { Mail, Linkedin, Github, ExternalLink, MapPin } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 const Contact = () => {
+    const { t } = useLanguage();
+    
     const contactInfo = [
         { 
             icon: Mail, 
-            label: 'Email', 
+            label: t.contact.labels.email, 
             value: 'Bouita203@gmail.com', 
             href: 'mailto:Bouita203@gmail.com' 
         },
         { 
             icon: Linkedin, 
-            label: 'LinkedIn', 
+            label: t.contact.labels.linkedin, 
             value: 'yassir-bouita-50173828a', 
             href: 'https://linkedin.com/in/yassir-bouita-50173828a' 
         },
         { 
             icon: Github, 
-            label: 'GitHub', 
+            label: t.contact.labels.github, 
             value: 'github.com/YassirB808', 
             href: 'https://github.com/YassirB808' 
         }
@@ -50,11 +53,11 @@ const Contact = () => {
                     className="text-center mb-16"
                 >
                     <motion.div variants={fadeInUp} className="inline-block px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-md mb-6 shadow-sm">
-                        <h2 className="text-[9px] uppercase tracking-widest font-bold text-blue-400">Get In Touch</h2>
+                        <h2 className="text-[9px] uppercase tracking-widest font-bold text-blue-400">{t.contact.badge}</h2>
                     </motion.div>
-                    <motion.h3 variants={fadeInUp} className="text-4xl font-bold text-white leading-tight">Let's Connect</motion.h3>
+                    <motion.h3 variants={fadeInUp} className="text-4xl font-bold text-white leading-tight">{t.contact.title}</motion.h3>
                     <motion.p variants={fadeInUp} className="mt-4 text-slate-400 max-w-lg mx-auto font-medium">
-                        I am currently looking for new opportunities and collaborations. Feel free to reach out through any of these channels.
+                        {t.contact.desc}
                     </motion.p>
                 </motion.div>
 
@@ -95,39 +98,11 @@ const Contact = () => {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    className="flex items-center justify-center gap-4 text-slate-500 mb-24 font-semibold italic text-sm"
+                    className="flex items-center justify-center gap-4 text-slate-500 font-semibold italic text-sm"
                 >
                     <MapPin size={16} className="text-blue-500" />
                     <span>Rabat, Morocco</span>
                 </motion.div>
-
-                {/* Footer */}
-                <footer className="pt-12 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-8">
-                    <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-white text-[10px]">YB</div>
-                        <span className="font-bold text-slate-400 text-sm">Yassir Bouita &copy; {new Date().getFullYear()}</span>
-                    </div>
-                    
-                    <div className="flex gap-8">
-                        {contactInfo.map((social) => (
-                            social.label !== 'Email' && (
-                                <a 
-                                    key={social.label} 
-                                    href={social.href} 
-                                    target="_blank" 
-                                    rel="noreferrer" 
-                                    className="text-[10px] font-bold uppercase tracking-widest text-slate-500 hover:text-blue-400 transition-colors"
-                                >
-                                    {social.label}
-                                </a>
-                            )
-                        ))}
-                    </div>
-
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-slate-600">
-                        Built with React & Tailwind
-                    </p>
-                </footer>
             </div>
         </section>
     );

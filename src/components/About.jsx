@@ -1,12 +1,15 @@
 import { motion } from 'framer-motion';
 import { MapPin, Search, GraduationCap, Award } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 const About = () => {
+    const { t } = useLanguage();
+    
     const highlights = [
-        { icon: MapPin, text: 'Rabat, Morocco', label: 'Location' },
-        { icon: Search, text: 'Seeking Internship', label: 'Status' },
-        { icon: GraduationCap, text: 'M.Sc. IT & Intelligent Systems', label: 'Degree' },
-        { icon: Award, text: 'Electronics & Robotics', label: 'Skills' },
+        { icon: MapPin, text: 'Rabat, Morocco', label: t.about.highlights.location },
+        { icon: Search, text: t.about.highlights.seeking, label: t.about.highlights.status },
+        { icon: GraduationCap, text: t.about.highlights.msc, label: t.about.highlights.degree },
+        { icon: Award, text: t.about.highlights.electronics, label: t.about.highlights.skills },
     ];
 
     const standardTransition = { duration: 0.5, ease: [0.22, 1, 0.36, 1] };
@@ -38,20 +41,20 @@ const About = () => {
                         className="lg:col-span-7 order-2 lg:order-1"
                     >
                         <motion.div variants={fadeInUp} className="inline-block px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-md mb-6 shadow-sm">
-                            <h2 className="text-[9px] uppercase tracking-widest font-bold text-blue-400">Professional Background</h2>
+                            <h2 className="text-[9px] uppercase tracking-widest font-bold text-blue-400">{t.about.badge}</h2>
                         </motion.div>
                         
                         <motion.h3 variants={fadeInUp} transition={{ ...standardTransition, delay: 0.05 }} className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8 leading-tight text-white text-center lg:text-left">
-                            Engineering the future through <br />
-                            <span className="text-blue-500 italic font-medium">Smart Systems.</span>
+                            {t.about.title1} <br />
+                            <span className="text-blue-500 italic font-medium">{t.about.title2}</span>
                         </motion.h3>
                         
                         <div className="space-y-6 text-base sm:text-lg text-slate-400 leading-relaxed font-medium">
                             <motion.p variants={fadeInUp} transition={{ delay: 0.1 }}>
-                                I am an <span className="text-white font-semibold">M.Sc. Candidate in IT and Intelligent Systems</span> at INSEA. My work focuses on the intersection of hardware and software, where I apply a multidisciplinary approach to solve complex engineering challenges.
+                                {t.about.p1}
                             </motion.p>
                             <motion.p variants={fadeInUp} transition={{ delay: 0.15 }}>
-                                With experience spanning from embedded electronics to modern web architecture, I specialize in building systems that are both robust and intelligent. I bridge the gap between physical sensors and digital data processing.
+                                {t.about.p2}
                             </motion.p>
                             
                             <motion.div 
@@ -59,12 +62,11 @@ const About = () => {
                                 transition={{ delay: 0.2 }}
                                 className="p-6 sm:p-8 bg-slate-900 border-l-2 border-blue-500 rounded-r-xl font-medium text-slate-300 italic shadow-lg group hover:border-blue-400 transition-colors duration-500"
                             >
-                                I am currently seeking an end-of-year internship to apply my expertise in IoT and AI to high-impact professional projects.
+                                {t.about.internship}
                             </motion.div>
                         </div>
                     </motion.div>
 
-                    {/* Stats/Highlights side */}
                     <div className="lg:col-span-5 order-1 lg:order-2">
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {highlights.map((item, idx) => (
@@ -95,7 +97,6 @@ const About = () => {
                                 </motion.div>
                             ))}
 
-                            {/* Additional Info Card */}
                             <motion.div
                                 variants={{
                                     initial: { opacity: 0, y: 15 },
@@ -112,8 +113,8 @@ const About = () => {
                                 className="p-6 bg-blue-600 rounded-xl flex flex-col justify-between sm:col-span-2 shadow-lg shadow-blue-900/10 group overflow-hidden relative transition-colors duration-500"
                             >
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 blur-3xl -z-10 group-hover:bg-white/10 transition-all duration-700"></div>
-                                <div className="text-white/80 text-[10px] font-bold uppercase tracking-widest mb-4 relative z-10">Core Focus</div>
-                                <div className="text-lg font-bold text-white italic relative z-10">Intelligent Systems & Full-stack IoT</div>
+                                <div className="text-white/80 text-[10px] font-bold uppercase tracking-widest mb-4 relative z-10">{t.about.focus}</div>
+                                <div className="text-lg font-bold text-white italic relative z-10">{t.about.focusText}</div>
                                 <div className="mt-4 h-[2px] w-full bg-white/20 rounded-full overflow-hidden relative z-10">
                                     <div className="h-full w-3/4 bg-white/50"></div>
                                 </div>

@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 import profilePhoto from '../assets/profile_photo.jpeg';
+import { useLanguage } from '../context/LanguageContext';
 
 const Hero = () => {
+  const { t } = useLanguage();
   const standardTransition = { duration: 0.5, ease: [0.22, 1, 0.36, 1] };
   
   const fadeInUp = {
@@ -37,16 +39,16 @@ const Hero = () => {
                 variants={fadeInUp}
                 className="inline-flex items-center bg-blue-600/10 border border-blue-500/20 text-blue-400 px-4 py-1 rounded-md text-[10px] font-bold uppercase tracking-widest mb-6 lg:mb-10 shadow-sm"
             >
-                Seeking End-of-Year Internship
+                {t.hero.seeking}
             </motion.div>
 
             <motion.h1 
                 variants={fadeInUp}
                 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-6 lg:mb-8 leading-[1.1] tracking-tight text-white"
             >
-                Hi, I'm <br />
+                {t.hero.greeting} <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">
-                Yassir Bouita
+                {t.hero.name}
                 </span>
             </motion.h1>
 
@@ -56,7 +58,7 @@ const Hero = () => {
                 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-200 mb-8 lg:mb-10 flex items-center justify-center lg:justify-start gap-4 italic opacity-80"
             >
                 <div className="hidden sm:block h-[1px] w-8 lg:w-12 bg-blue-500/30"></div>
-                M.Sc. Candidate in IT & Intelligent Systems
+                {t.hero.degree}
             </motion.h2>
 
             <motion.p 
@@ -64,7 +66,7 @@ const Hero = () => {
                 transition={{ ...standardTransition, delay: 0.2 }}
                 className="text-base sm:text-lg text-slate-400 max-w-xl mx-auto lg:mx-0 mb-10 lg:mb-12 leading-relaxed font-medium"
             >
-                Passionate about bridging hardware and digital intelligence to build smart connected solutions for the future.
+                {t.hero.description}
             </motion.p>
 
             <motion.div 
@@ -78,7 +80,7 @@ const Hero = () => {
                   whileTap={{ scale: 0.98 }}
                   className="w-full sm:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold flex items-center justify-center gap-2 shadow-xl shadow-blue-900/20 uppercase tracking-widest text-[11px] transition-colors duration-300"
                 >
-                View Projects 
+                {t.hero.viewProjects} 
                 <ChevronRight size={16} />
                 </motion.a>
                 <motion.a
@@ -87,7 +89,7 @@ const Hero = () => {
                   whileTap={{ scale: 0.98 }}
                   className="w-full sm:w-auto px-8 py-4 bg-slate-900 border border-slate-800 hover:border-slate-700 text-white rounded-lg font-bold flex items-center justify-center shadow-xl uppercase tracking-widest text-[11px] transition-colors duration-300"
                 >
-                Contact Me
+                {t.hero.contactMe}
                 </motion.a>
             </motion.div>
             </motion.div>

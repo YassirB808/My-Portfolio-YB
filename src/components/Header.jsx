@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const { language, changeLanguage, t } = useLanguage();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -15,12 +17,14 @@ const Header = () => {
     }, []);
 
     const navLinks = [
-        { name: 'Home', href: '#home' },
-        { name: 'About', href: '#about' },
-        { name: 'Experience', href: '#experience' },
-        { name: 'Projects', href: '#projects' },
-        { name: 'Skills', href: '#skills' },
-        { name: 'Contact', href: '#contact' },
+        { name: t.nav.home, href: '#home' },
+        { name: t.nav.about, href: '#about' },
+        { name: t.nav.experience, href: '#experience' },
+        { name: t.nav.projects, href: '#projects' },
+        { name: t.nav.certifications, href: '#certifications' },
+        { name: t.nav.languages, href: '#languages' },
+        { name: t.nav.skills, href: '#skills' },
+        { name: t.nav.contact, href: '#contact' },
     ];
 
     const socialLinks = [
@@ -63,6 +67,30 @@ const Header = () => {
                             </a>
                         ))}
                     </div>
+
+                    {/* Language Switcher - 2 Buttons */}
+                    <div className="flex items-center bg-slate-900/50 border border-slate-800 rounded-lg p-1">
+                        <button 
+                            onClick={() => changeLanguage('en')}
+                            className={`px-3 py-1 rounded-md text-[10px] font-black uppercase tracking-widest transition-all ${
+                                language === 'en' 
+                                ? 'bg-blue-600 text-white shadow-lg' 
+                                : 'text-slate-500 hover:text-slate-300'
+                            }`}
+                        >
+                            EN
+                        </button>
+                        <button 
+                            onClick={() => changeLanguage('fr')}
+                            className={`px-3 py-1 rounded-md text-[10px] font-black uppercase tracking-widest transition-all ${
+                                language === 'fr' 
+                                ? 'bg-blue-600 text-white shadow-lg' 
+                                : 'text-slate-500 hover:text-slate-300'
+                            }`}
+                        >
+                            FR
+                        </button>
+                    </div>
                     
                     <div className="flex items-center gap-4">
                         {socialLinks.map((social) => (
@@ -82,13 +110,33 @@ const Header = () => {
                 </div>
 
                 {/* Mobile Menu Toggle */}
-                <button 
-                    className="lg:hidden text-slate-300 hover:text-white transition-colors p-2"
-                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    aria-label="Toggle Menu"
-                >
-                    {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
+                <div className="flex items-center gap-4 lg:hidden">
+                    <div className="flex items-center bg-slate-900 border border-slate-800 rounded-lg p-0.5">
+                        <button 
+                            onClick={() => changeLanguage('en')}
+                            className={`px-2.5 py-1 rounded text-[9px] font-black transition-all ${
+                                language === 'en' ? 'bg-blue-600 text-white' : 'text-slate-500'
+                            }`}
+                        >
+                            EN
+                        </button>
+                        <button 
+                            onClick={() => changeLanguage('fr')}
+                            className={`px-2.5 py-1 rounded text-[9px] font-black transition-all ${
+                                language === 'fr' ? 'bg-blue-600 text-white' : 'text-slate-500'
+                            }`}
+                        >
+                            FR
+                        </button>
+                    </div>
+                    <button 
+                        className="text-slate-300 hover:text-white transition-colors p-2"
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        aria-label="Toggle Menu"
+                    >
+                        {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
+                </div>
             </nav>
 
             {/* Mobile Nav Overlay */}
