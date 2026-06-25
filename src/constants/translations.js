@@ -75,6 +75,7 @@ export const translations = {
         archix: "Frontend architecture repository focusing on scalability, performance, and modern UI design principles.",
         portfolioInsea: "My professional developer portfolio website showcasing my engineering projects, skills, education, and experiences.",
         gestionReparation: "An OOP module final project for repair management built with Java, JSP, Servlets, HTML, CSS, and JavaScript.",
+        projetPhpInsea: "A PHP-based web application designed as a new portal/page for INSEA University.",
         aqi: "Air quality monitoring application providing real-time environmental data visualization.",
         handwritten: "Machine learning model for character recognition utilizing advanced neural network architectures.",
       }
@@ -207,6 +208,7 @@ export const translations = {
         archix: "Dépôt d'architecture frontend axé sur l'évolutivité, la performance et les principes de conception UI modernes.",
         portfolioInsea: "Mon site web de portfolio professionnel présentant mes projets d'ingénierie, mes compétences, mon éducation et mes expériences.",
         gestionReparation: "Projet de fin de module 'POO' de gestion de réparation développé avec Java, JSP, Servlet, HTML, CSS et JavaScript.",
+        projetPhpInsea: "Une application web en PHP conçue comme un nouveau portail/page web pour l'université INSEA.",
         aqi: "Application de surveillance de la qualité de l'air fournissant une visualisation des données environnementales en temps réel.",
         handwritten: "Modèle d'apprentissage automatique pour la reconnaissance de caractères utilisant des architectures de réseaux neuronaux avancées.",
       }

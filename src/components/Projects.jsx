@@ -35,6 +35,13 @@ const Projects = () => {
       color: "from-teal-500 to-cyan-500"
     },
     {
+      title: "Projet PHP - Page INSEA",
+      description: t.projects.items.projetPhpInsea,
+      techStack: ["PHP", "MySQL", "HTML/CSS", "JavaScript"],
+      githubLink: "https://github.com/YassirB808/ProjetPHP-PageINSEA",
+      color: "from-indigo-500 to-cyan-500"
+    },
+    {
       title: "Archix-Frontend",
       description: t.projects.items.archix,
       techStack: ["TypeScript", "React", "TailwindCSS"],
