@@ -6,24 +6,36 @@ const Skills = () => {
 
   const skillCategories = [
     {
-      title: t.skills.categories.de,
-      skills: [t.skills.names.postgre, t.skills.names.mongo, "FastAPI", "Ubidots", "Cloud Computing"]
-    },
-    {
-      title: t.skills.categories.iot,
-      skills: [t.skills.names.embedded, "Arduino/STM32", "Proteus/ISIS", "Sensors", t.skills.names.circuit]
+      title: t.skills.categories.lang,
+      skills: ["Python", "C", "Java", "JavaScript", "MATLAB", "R", "TypeScript"]
     },
     {
       title: t.skills.categories.ai,
-      skills: [t.skills.names.vision, "TensorFlow/Keras", "Scikit-Learn", "YOLOv8", t.skills.names.learning]
+      skills: ["PyTorch", "Scikit-learn", "TensorFlow", "CNN", "YOLO (Ultralytics YOLOv8)"]
     },
     {
       title: t.skills.categories.web,
-      skills: ["React.js", "TailwindCSS", "Node.js", "Express", t.skills.names.rest]
+      skills: ["Flask", "Django", "Streamlit", "React.js", "Angular", "HTML", "CSS", "PHP", "Bootstrap", "WebSocket", "Tailwind"]
+    },
+    {
+      title: t.skills.categories.bd,
+      skills: ["Apache", "Hadoop", "Cloudera", "Google Cloud"]
+    },
+    {
+      title: t.skills.categories.db,
+      skills: ["MySQL", "PostgreSQL", "SQLite", "MongoDB", "Redis", "Oracle (SQL, PL/SQL)", "DB Administration"]
+    },
+    {
+      title: t.skills.categories.iot,
+      skills: ["Arduino", "SolidWorks", "Catia V5", "PCB Design", "Soldering"]
+    },
+    {
+      title: t.skills.categories.de,
+      skills: ["ETL", "Talend", "Power BI", "Tableau", "Web Scraping"]
     },
     {
       title: t.skills.categories.tools,
-      skills: ["Python", "C/C++", "Kotlin", "JavaScript", "Git/GitHub", "Jupyter"]
+      skills: ["Git", "GitHub", "Office365", "LaTeX (Overleaf)", "Notion", "ClickUp", "Jira"]
     }
   ];
 
