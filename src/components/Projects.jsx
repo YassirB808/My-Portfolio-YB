@@ -28,6 +28,13 @@ const Projects = () => {
       color: "from-purple-600 to-pink-600"
     },
     {
+      title: "Gestion Réparation",
+      description: t.projects.items.gestionReparation,
+      techStack: ["Java", "JSP", "Servlets", "HTML/CSS", "JavaScript"],
+      githubLink: "https://github.com/YassirB808/gestion_reparation",
+      color: "from-teal-500 to-cyan-500"
+    },
+    {
       title: "Archix-Frontend",
       description: t.projects.items.archix,
       techStack: ["TypeScript", "React", "TailwindCSS"],
