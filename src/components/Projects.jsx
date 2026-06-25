@@ -21,6 +21,13 @@ const Projects = () => {
       color: "from-indigo-600 to-purple-600"
     },
     {
+      title: "Portfolio Project INSEA",
+      description: t.projects.items.portfolioInsea,
+      techStack: ["React.js", "TailwindCSS", "Vite", "Framer Motion"],
+      githubLink: "https://github.com/YassirB808/PortfolioProjectINSEA",
+      color: "from-purple-600 to-pink-600"
+    },
+    {
       title: "Archix-Frontend",
       description: t.projects.items.archix,
       techStack: ["TypeScript", "React", "TailwindCSS"],

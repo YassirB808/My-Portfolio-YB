@@ -23,7 +23,7 @@ const Skills = () => {
     },
     {
       title: t.skills.categories.tools,
-      skills: ["Python", "C/C++", "JavaScript", "Git/GitHub", "Jupyter"]
+      skills: ["Python", "C/C++", "Kotlin", "JavaScript", "Git/GitHub", "Jupyter"]
     }
   ];
 
