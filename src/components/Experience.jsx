@@ -78,7 +78,7 @@ const Experience = () => {
         </motion.div>
 
         <div className="relative">
-          <div className="absolute left-0 md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-[1px] bg-slate-800 rounded-full"></div>
+          <div className="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-[1px] bg-slate-800 rounded-full"></div>
 
           <div className="space-y-16">
             {timelineItems.map((item, idx) => (
@@ -96,7 +96,7 @@ const Experience = () => {
                   {item.type === 'work' ? <Briefcase size={14} className="text-blue-500 relative z-10" /> : <GraduationCap size={14} className="text-blue-500 relative z-10" />}
                 </div>
 
-                <div className={`md:w-1/2 ${idx % 2 === 0 ? 'md:pl-12' : 'md:pr-12'}`}>
+                <div className={`pl-12 md:w-1/2 ${idx % 2 === 0 ? 'md:pl-12' : 'md:pl-0 md:pr-12'}`}>
                   <motion.div 
                     whileHover={{ y: -5 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -104,15 +104,15 @@ const Experience = () => {
                   >
                     <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     
-                    <div className="flex items-start gap-5 mb-6 relative z-10">
-                        <div className="w-16 h-16 rounded-xl bg-white border border-slate-800 flex items-center justify-center font-bold text-slate-900 text-[10px] uppercase shadow-sm flex-shrink-0 group-hover:shadow-md transition-all overflow-hidden p-2">
+                    <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-5 mb-6 relative z-10">
+                        <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-white border border-slate-800 flex items-center justify-center font-bold text-slate-900 text-[10px] uppercase shadow-sm flex-shrink-0 group-hover:shadow-md transition-all overflow-hidden p-2">
                             <img src={item.logo} alt={item.institution || item.company} className="w-full h-full object-contain" />
                         </div>
                         <div>
                             <span className="flex items-center gap-1 text-[9px] font-bold text-blue-500 bg-blue-500/10 px-2 py-0.5 rounded-md uppercase tracking-widest mb-2 w-fit">
                                 <Calendar size={10} /> {item.period}
                             </span>
-                            <h4 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors leading-tight">{item.title}</h4>
+                            <h4 className="text-lg sm:text-xl font-bold text-white group-hover:text-blue-400 transition-colors leading-tight">{item.title}</h4>
                         </div>
                     </div>
 
