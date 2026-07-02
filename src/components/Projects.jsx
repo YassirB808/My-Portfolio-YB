@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Github, Code2 } from 'lucide-react';
+import { ExternalLink, Code2 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 const Projects = () => {
@@ -147,7 +147,7 @@ const Projects = () => {
                         whileHover={{ scale: 1.1 }}
                         className="text-slate-400 hover:text-white bg-slate-950 p-1.5 sm:p-2 rounded-lg border border-slate-800 hover:border-blue-500/30 transition-all flex-shrink-0"
                     >
-                      <Github size={16} className="sm:w-[18px] sm:h-[18px]" />
+                      <ExternalLink size={16} className="sm:w-[18px] sm:h-[18px]" />
                     </motion.a>
                   </div>
                 </div>
