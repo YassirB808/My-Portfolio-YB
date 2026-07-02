@@ -7,7 +7,7 @@ const Skills = () => {
   const skillCategories = [
     {
       title: t.skills.categories.lang,
-      skills: ["Python", "C", "Java", "JavaScript", "MATLAB", "R", "TypeScript"]
+      skills: ["Python", "Kotlin", "C", "Java", "JavaScript", "MATLAB", "R", "TypeScript"]
     },
     {
       title: t.skills.categories.ai,

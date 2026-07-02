@@ -30,7 +30,7 @@ const Projects = () => {
     {
       title: "Portfolio Project INSEA",
       description: t.projects.items.portfolioInsea,
-      techStack: ["React.js", "TailwindCSS", "Vite", "Framer Motion"],
+      techStack: ["React.js", "TailwindCSS", "Kotlin", "Vite", "Framer Motion"],
       githubLink: "https://github.com/YassirB808/PortfolioProjectINSEA",
       color: "from-purple-600 to-pink-600"
     },
