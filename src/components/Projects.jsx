@@ -49,6 +49,13 @@ const Projects = () => {
       color: "from-pink-500 to-rose-600"
     },
     {
+      title: "Gesture-Controlled Robotic Arm",
+      description: t.projects.items.roboticArm,
+      techStack: ["Arduino", "C/C++", "Sensors", "Bluetooth", "AutoCAD"],
+      githubLink: "https://www.linkedin.com/in/yassir-bouita-50173828a/details/projects/",
+      color: "from-orange-600 to-amber-500"
+    },
+    {
       title: "Projet PHP - Page INSEA",
       description: t.projects.items.projetPhpInsea,
       techStack: ["PHP", "MySQL", "HTML/CSS", "JavaScript"],

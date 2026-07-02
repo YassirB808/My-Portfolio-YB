@@ -78,6 +78,7 @@ export const translations = {
         projetPhpInsea: "A PHP-based web application designed as a new portal/page for INSEA University.",
         academicOrientation: "Academic orientation Agentic AI web app featuring an intelligent chatbot, secure authentication, admin interface, interaction history, and assessment quiz.",
         xpenses: "Personal finance management mobile app developed with Flutter/Riverpod. Features budgets, offline sync with Hive, and financial analysis via OpenAI.",
+        roboticArm: "A final year project featuring a robotic arm mimicking real-time hand movements wirelessly via Bluetooth. Utilized flex sensors, gyroscope, Arduino Uno/Nano, and servo motors.",
         aqi: "Air quality monitoring application providing real-time environmental data visualization.",
         handwritten: "Machine learning model for character recognition utilizing advanced neural network architectures.",
       }
@@ -213,6 +214,7 @@ export const translations = {
         projetPhpInsea: "Une application web en PHP conçue comme un nouveau portail/page web pour l'université INSEA.",
         academicOrientation: "Application web d'orientation académique (Agentic AI) intégrant un chatbot intelligent, authentification sécurisée, interface admin, historique et quiz d'évaluation.",
         xpenses: "Application mobile de gestion de finances personnelles développée avec Flutter/Riverpod, avec budgets, synchronisation hors ligne Hive et conseils financiers IA (OpenAI).",
+        roboticArm: "Projet de fin d'études d'un bras robotique reproduisant en temps réel les mouvements de la main via Bluetooth. Conçu avec capteurs de flexion, gyroscope, Arduino Uno/Nano et servomoteurs.",
         aqi: "Application de surveillance de la qualité de l'air fournissant une visualisation des données environnementales en temps réel.",
         handwritten: "Modèle d'apprentissage automatique pour la reconnaissance de caractères utilisant des architectures de réseaux neuronaux avancées.",
       }
