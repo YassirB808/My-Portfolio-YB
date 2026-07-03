@@ -107,7 +107,7 @@ const Hero = () => {
                 <img 
                     src={profilePhoto} 
                     alt="Yassir Bouita" 
-                    className="w-full aspect-square md:w-[420px] md:h-[420px] object-cover rounded-2xl transition duration-700 grayscale group-hover:grayscale-0 group-hover:scale-[1.01]" 
+                    className="w-full aspect-square md:w-[420px] md:h-[420px] object-cover rounded-2xl transition duration-700 grayscale-0 lg:grayscale lg:group-hover:grayscale-0 lg:group-hover:scale-[1.01]" 
                 />
                 </div>
             </div>

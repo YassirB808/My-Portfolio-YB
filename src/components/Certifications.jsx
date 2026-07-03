@@ -90,7 +90,7 @@ const Certifications = () => {
                 <img 
                   src={cert.logo} 
                   alt={cert.issuer} 
-                  className="max-h-full max-w-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500"
+                  className="max-h-full max-w-full object-contain filter grayscale-0 lg:grayscale lg:group-hover:grayscale-0 transition-all duration-500"
                 />
               </div>
 
