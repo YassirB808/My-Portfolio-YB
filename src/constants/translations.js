@@ -11,7 +11,7 @@ export const translations = {
       contact: "Contact",
     },
     hero: {
-      seeking: "Seeking End-of-Year Internship",
+      seeking: "Seeking End-of-Studies Internship (PFE)",
       greeting: "Hi, I'm",
       name: "Yassir Bouita",
       degree: "M.Sc. Student in IT & Intelligent Systems",
@@ -25,11 +25,11 @@ export const translations = {
       title2: "Smart Systems.",
       p1: "I am an M.Sc. Student in IT and Intelligent Systems at INSEA. My work focuses on the intersection of hardware and software, where I apply a multidisciplinary approach to solve complex engineering challenges.",
       p2: "With experience spanning from embedded electronics to modern web architecture, I specialize in building systems that are both robust and intelligent. I bridge the gap between physical sensors and digital data processing.",
-      internship: "I am currently seeking an end-of-year internship to apply my expertise in IoT and AI to high-impact professional projects.",
+      internship: "I am currently seeking an end-of-studies internship (PFE) to apply my expertise in IoT and AI to high-impact professional projects.",
       highlights: {
         location: "Location",
         status: "Status",
-        seeking: "Seeking Internship",
+        seeking: "Seeking PFE Internship",
         degree: "Degree",
         msc: "M.Sc. IT & Intelligent Systems",
         skills: "Skills",
@@ -55,7 +55,8 @@ export const translations = {
         bsc: {
           title: "B.Sc. in Electronics, IT and Robotics",
           inst: "Faculty of Sciences of Rabat (FSR)",
-          desc: "Specialized in embedded systems, Arduino, sensor electronics, full-stack dev, and 3D modeling.",
+          desc: "Graduated top of class (Major de promotion). Specialized in embedded systems, Arduino, sensor electronics, full-stack dev, and 3D modeling.",
+          honor: "Top of Class (Major de promotion)",
         }
       },
       work: {
@@ -147,7 +148,7 @@ export const translations = {
       contact: "Contact",
     },
     hero: {
-      seeking: "À la recherche d'un stage de fin d'année",
+      seeking: "À la recherche d'un Stage de Fin d'Études (PFE)",
       greeting: "Salut, je suis",
       name: "Yassir Bouita",
       degree: "Étudiant en 1ère année Master Systèmes d'Information et Systèmes Intelligents",
@@ -161,11 +162,11 @@ export const translations = {
       title2: "Systèmes Intelligents.",
       p1: "Je suis un étudiant en 1ère année Master Systèmes d'Information et Systèmes Intelligents (INSEA). Mon travail se concentre sur l'intersection du matériel et du logiciel, où j'applique une approche multidisciplinaire pour résoudre des défis d'ingénierie complexes.",
       p2: "Avec une expérience allant de l'électronique embarquée à l'architecture web moderne, je me spécialise dans la construction de systèmes à la fois robustes et intelligents. Je fais le pont entre les capteurs physiques et le traitement des données numériques.",
-      internship: "Je recherche actuellement un stage de fin d'année pour appliquer mon expertise en IoT et IA à des projets professionnels à fort impact.",
+      internship: "Je recherche actuellement un stage de fin d'études (PFE) pour appliquer mon expertise en IoT et IA à des projets professionnels à fort impact.",
       highlights: {
         location: "Localisation",
         status: "Statut",
-        seeking: "Recherche de Stage",
+        seeking: "Recherche de Stage PFE",
         degree: "Diplôme",
         msc: "1ère année Master Systèmes d'Information et Systèmes Intelligents",
         skills: "Compétences",
@@ -191,7 +192,8 @@ export const translations = {
         bsc: {
           title: "Licence en Électronique, Informatique et Robotique",
           inst: "Faculté des Sciences de Rabat (FSR)",
-          desc: "Spécialisé dans les systèmes embarqués, Arduino, l'électronique des capteurs, le dev full-stack et la modélisation 3D.",
+          desc: "Major de promotion (1er de la classe). Spécialisé dans les systèmes embarqués, Arduino, l'électronique des capteurs, le dev full-stack et la modélisation 3D.",
+          honor: "Major de Promotion",
         }
       },
       work: {

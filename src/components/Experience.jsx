@@ -50,7 +50,8 @@ const Experience = () => {
       period: '2021 - 2024',
       logo: fsrLogo,
       isImage: true,
-      description: t.experience.edu.bsc.desc
+      description: t.experience.edu.bsc.desc,
+      honor: t.experience.edu.bsc.honor
     }
   ];
 
@@ -109,9 +110,16 @@ const Experience = () => {
                             <img src={item.logo} alt={item.institution || item.company} className="w-full h-full object-contain" />
                         </div>
                         <div>
-                            <span className="flex items-center gap-1 text-[9px] font-bold text-blue-500 bg-blue-500/10 px-2 py-0.5 rounded-md uppercase tracking-widest mb-2 w-fit">
-                                <Calendar size={10} /> {item.period}
-                            </span>
+                            <div className="flex flex-wrap items-center gap-2 mb-2">
+                              <span className="flex items-center gap-1 text-[9px] font-bold text-blue-500 bg-blue-500/10 px-2 py-0.5 rounded-md uppercase tracking-widest w-fit">
+                                  <Calendar size={10} /> {item.period}
+                              </span>
+                              {item.honor && (
+                                <span className="flex items-center gap-1 text-[9px] font-bold text-amber-400 bg-amber-400/10 border border-amber-400/20 px-2 py-0.5 rounded-md uppercase tracking-widest w-fit shadow-sm">
+                                  🏆 {item.honor}
+                                </span>
+                              )}
+                            </div>
                             <h4 className="text-lg sm:text-xl font-bold text-white group-hover:text-blue-400 transition-colors leading-tight">{item.title}</h4>
                         </div>
                     </div>
