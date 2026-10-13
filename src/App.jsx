@@ -17,13 +17,24 @@ import { LanguageProvider, useLanguage } from './context/LanguageContext';
 function AppContent() {
   const { t } = useLanguage();
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: -1000, y: -1000 });
 
   useEffect(() => {
     const handleScroll = () => {
       setShowBackToTop(window.scrollY > 400);
     };
+
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
   }, []);
 
   const scrollToTop = () => {
@@ -31,9 +42,17 @@ function AppContent() {
   };
   
   return (
-    <div className="bg-slate-950 text-white min-h-screen selection:bg-blue-500/30">
+    <div className="bg-slate-950 text-white min-h-screen selection:bg-blue-500/30 relative">
+      {/* Ambient Mouse Glow / Spotlight for Desktop */}
+      <div 
+        className="fixed inset-0 pointer-events-none z-30 transition-opacity duration-300 hidden md:block"
+        style={{
+          background: `radial-gradient(700px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(59, 130, 246, 0.075), transparent 80%)`,
+        }}
+      />
+
       <Header />
-      <main className="bg-slate-950">
+      <main className="bg-slate-950 relative z-10">
         <Hero />
         <About />
         <Experience />
@@ -65,7 +84,7 @@ function AppContent() {
       </AnimatePresence>
 
       {/* Simplified Footer */}
-      <footer className="py-12 border-t border-slate-900 bg-slate-950">
+      <footer className="py-12 border-t border-slate-900 bg-slate-950 relative z-10">
         <div className="container mx-auto px-6">
           <div className="flex flex-col items-center text-center gap-8">
             {/* Resume Section */}

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Mail, Linkedin, Github, ExternalLink, MapPin, Send, Check, Copy, CheckCircle2 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Mail, Linkedin, Github, ExternalLink, MapPin, Send, Check, Copy, CheckCircle2, AlertCircle } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 const Contact = () => {
@@ -14,14 +14,23 @@ const Contact = () => {
     const [copied, setCopied] = useState(false);
     const [submitted, setSubmitted] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submissionType, setSubmissionType] = useState('mailto'); // 'api' or 'mailto'
+    const [toastMessage, setToastMessage] = useState(null);
 
     const emailAddress = 'Bouita203@gmail.com';
+    const web3FormsKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+
+    const showToast = (msg) => {
+        setToastMessage(msg);
+        setTimeout(() => setToastMessage(null), 3000);
+    };
 
     const handleCopyEmail = (e) => {
         e.preventDefault();
         e.stopPropagation();
         navigator.clipboard.writeText(emailAddress);
         setCopied(true);
+        showToast(t.contact.copied || "Email copied to clipboard!");
         setTimeout(() => setCopied(false), 2500);
     };
 
@@ -30,22 +39,51 @@ const Contact = () => {
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
 
+        if (web3FormsKey) {
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                    body: JSON.stringify({
+                        access_key: web3FormsKey,
+                        name: formData.name,
+                        email: formData.email,
+                        subject: formData.subject || `Portfolio Contact from ${formData.name}`,
+                        message: formData.message,
+                        from_name: 'Portfolio Contact Form'
+                    })
+                });
+                const result = await response.json();
+                if (result.success) {
+                    setSubmissionType('api');
+                    setSubmitted(true);
+                    setIsSubmitting(false);
+                    showToast("Message delivered directly to inbox!");
+                    return;
+                }
+            } catch (err) {
+                console.warn("Direct API send fallback to mailto:", err);
+            }
+        }
+
+        // Default / Fallback: Launch mail client with prefilled details
         const emailSubject = encodeURIComponent(formData.subject || `Portfolio Contact from ${formData.name}`);
         const emailBody = encodeURIComponent(
             `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
         );
 
-        // Open mailto link
         window.location.href = `mailto:${emailAddress}?subject=${emailSubject}&body=${emailBody}`;
 
         setTimeout(() => {
             setIsSubmitting(false);
+            setSubmissionType('mailto');
             setSubmitted(true);
-        }, 600);
+            showToast("Email draft prepared!");
+        }, 500);
     };
 
     const resetForm = () => {
@@ -93,6 +131,21 @@ const Contact = () => {
             <div className="absolute top-1/2 left-0 w-96 h-96 bg-blue-600/5 rounded-full blur-[120px] pointer-events-none -translate-y-1/2"></div>
             <div className="absolute bottom-0 right-0 w-96 h-96 bg-indigo-600/5 rounded-full blur-[120px] pointer-events-none"></div>
 
+            {/* Floating Toast Notification */}
+            <AnimatePresence>
+                {toastMessage && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 20, scale: 0.9 }}
+                        className="fixed bottom-20 right-6 z-50 flex items-center gap-2 px-4 py-2.5 bg-slate-900 border border-blue-500/40 text-white rounded-xl shadow-2xl backdrop-blur-md text-xs font-semibold"
+                    >
+                        <Check size={14} className="text-emerald-400" />
+                        <span>{toastMessage}</span>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
             <div className="container mx-auto px-6 max-w-6xl relative z-10">
                 <motion.div 
                     initial="initial"
@@ -118,7 +171,7 @@ const Contact = () => {
                         transition={standardTransition}
                         className="lg:col-span-5 flex flex-col gap-6"
                     >
-                        <div className="bg-slate-900/60 border border-slate-800 p-8 rounded-2xl shadow-xl">
+                        <div className="bg-slate-900/60 border border-slate-800 p-8 rounded-2xl shadow-xl backdrop-blur-sm">
                             <h4 className="text-xl font-bold text-white mb-2">{t.contact.directConnect || "Direct Channels"}</h4>
                             <p className="text-slate-400 text-sm mb-6 leading-relaxed">
                                 Feel free to connect directly via email or LinkedIn. I am prompt in answering professional inquiries.
@@ -149,7 +202,7 @@ const Contact = () => {
                                             <button
                                                 type="button"
                                                 onClick={handleCopyEmail}
-                                                className="p-2 text-slate-400 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-lg transition-colors flex items-center gap-1 text-[10px] font-bold"
+                                                className="p-2 text-slate-400 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-lg transition-colors flex items-center gap-1.5 text-[10px] font-bold cursor-pointer"
                                                 title="Copy email to clipboard"
                                                 aria-label="Copy email address"
                                             >
@@ -200,7 +253,7 @@ const Contact = () => {
                         transition={standardTransition}
                         className="lg:col-span-7"
                     >
-                        <div className="bg-slate-900/60 border border-slate-800 p-8 sm:p-10 rounded-2xl shadow-xl">
+                        <div className="bg-slate-900/60 border border-slate-800 p-8 sm:p-10 rounded-2xl shadow-xl backdrop-blur-sm">
                             <h4 className="text-xl font-bold text-white mb-2">{t.contact.formTitle}</h4>
                             <p className="text-slate-400 text-sm mb-8 leading-relaxed">
                                 {t.contact.formSubtitle}
@@ -217,12 +270,14 @@ const Contact = () => {
                                     </div>
                                     <h5 className="text-lg font-bold text-white">{t.contact.successTitle}</h5>
                                     <p className="text-slate-300 text-sm max-w-md mx-auto leading-relaxed">
-                                        {t.contact.successDesc}
+                                        {submissionType === 'api' 
+                                            ? "Your message has been sent directly to Yassir's inbox. Thank you!" 
+                                            : t.contact.successDesc}
                                     </p>
                                     <button
                                         type="button"
                                         onClick={resetForm}
-                                        className="mt-4 px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-bold uppercase tracking-widest transition-colors"
+                                        className="mt-4 px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-bold uppercase tracking-widest transition-colors cursor-pointer"
                                     >
                                         Send another message
                                     </button>
@@ -292,6 +347,11 @@ const Contact = () => {
                                             placeholder={t.contact.messagePlaceholder}
                                             className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-sm text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all resize-none"
                                         ></textarea>
+                                    </div>
+
+                                    <div className="flex items-center gap-2 text-[11px] text-slate-500">
+                                        <AlertCircle size={13} className="text-blue-400 flex-shrink-0" />
+                                        <span>Sends straight to <strong>{emailAddress}</strong></span>
                                     </div>
 
                                     <button

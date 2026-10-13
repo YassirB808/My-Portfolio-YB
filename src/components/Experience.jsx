@@ -17,6 +17,7 @@ const Experience = () => {
       institution: t.experience.edu.msc.inst,
       location: 'Rabat, Morocco',
       period: '2025 - Ongoing',
+      isOngoing: true,
       logo: inseaLogo,
       isImage: true,
       description: t.experience.edu.msc.desc
@@ -92,16 +93,16 @@ const Experience = () => {
                 transition={{ ...standardTransition, delay: 0.1 }}
                 className={`relative flex flex-col md:flex-row gap-6 md:gap-0 ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
               >
-                <div className="absolute left-0 md:left-1/2 md:-translate-x-1/2 top-0 w-8 h-8 bg-slate-950 border border-slate-700 rounded-full z-10 flex items-center justify-center shadow-lg group">
-                  <div className="absolute inset-0 bg-blue-500/20 rounded-full scale-0 group-hover:scale-100 transition-transform duration-500"></div>
-                  {item.type === 'work' ? <Briefcase size={14} className="text-blue-500 relative z-10" /> : <GraduationCap size={14} className="text-blue-500 relative z-10" />}
+                <div className={`absolute left-0 md:left-1/2 md:-translate-x-1/2 top-0 w-8 h-8 bg-slate-950 border ${item.isOngoing ? 'border-emerald-500/80 shadow-emerald-500/30' : 'border-slate-700'} rounded-full z-10 flex items-center justify-center shadow-lg group`}>
+                  <div className={`absolute inset-0 ${item.isOngoing ? 'bg-emerald-500/20' : 'bg-blue-500/20'} rounded-full ${item.isOngoing ? 'scale-100' : 'scale-0'} group-hover:scale-100 transition-transform duration-500`}></div>
+                  {item.type === 'work' ? <Briefcase size={14} className={item.isOngoing ? "text-emerald-400 relative z-10" : "text-blue-500 relative z-10"} /> : <GraduationCap size={14} className={item.isOngoing ? "text-emerald-400 relative z-10" : "text-blue-500 relative z-10"} />}
                 </div>
 
                 <div className={`pl-12 md:w-1/2 ${idx % 2 === 0 ? 'md:pl-12' : 'md:pl-0 md:pr-12'}`}>
                   <motion.div 
                     whileHover={{ y: -5 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="bg-slate-900/40 border border-slate-800/60 p-6 md:p-8 rounded-2xl shadow-xl group hover:border-blue-500/30 transition-colors duration-300 relative overflow-hidden"
+                    className={`bg-slate-900/40 border ${item.isOngoing ? 'border-emerald-500/30' : 'border-slate-800/60'} p-6 md:p-8 rounded-2xl shadow-xl group hover:border-blue-500/30 transition-colors duration-300 relative overflow-hidden backdrop-blur-sm`}
                   >
                     <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     
@@ -111,8 +112,16 @@ const Experience = () => {
                         </div>
                         <div>
                             <div className="flex flex-wrap items-center gap-2 mb-2">
-                              <span className="flex items-center gap-1 text-[9px] font-bold text-blue-500 bg-blue-500/10 px-2 py-0.5 rounded-md uppercase tracking-widest w-fit">
-                                  <Calendar size={10} /> {item.period}
+                              <span className={`flex items-center gap-1.5 text-[9px] font-bold ${item.isOngoing ? 'text-emerald-400 bg-emerald-500/10 border border-emerald-500/20' : 'text-blue-500 bg-blue-500/10'} px-2 py-0.5 rounded-md uppercase tracking-widest w-fit`}>
+                                  {item.isOngoing ? (
+                                    <span className="relative flex h-1.5 w-1.5">
+                                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+                                    </span>
+                                  ) : (
+                                    <Calendar size={10} />
+                                  )}
+                                  {item.period}
                               </span>
                               {item.honor && (
                                 <span className="flex items-center gap-1 text-[9px] font-bold text-amber-400 bg-amber-400/10 border border-amber-400/20 px-2 py-0.5 rounded-md uppercase tracking-widest w-fit shadow-sm">

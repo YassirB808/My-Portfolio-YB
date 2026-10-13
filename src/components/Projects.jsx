@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Code2, Github, Linkedin, Cpu, Brain, Globe, Smartphone, Sparkles } from 'lucide-react';
+import { ExternalLink, Code2, Github, Linkedin, Cpu, Brain, Globe, Smartphone, Sparkles, Search, X } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 const Projects = () => {
   const { t } = useLanguage();
   const [activeCategory, setActiveCategory] = useState('all');
+  const [searchQuery, setSearchQuery] = useState('');
 
   const projectsData = [
     {
@@ -139,9 +140,18 @@ const Projects = () => {
     { key: 'mobile', label: t.projects.categories.mobile, count: projectsData.filter(p => p.category === 'mobile').length },
   ];
 
-  const filteredProjects = activeCategory === 'all'
-    ? projectsData
-    : projectsData.filter(p => p.category === activeCategory);
+  const filteredProjects = projectsData.filter((project) => {
+    const matchesCategory = activeCategory === 'all' || project.category === activeCategory;
+    const q = searchQuery.toLowerCase().trim();
+    if (!q) return matchesCategory;
+
+    const matchesSearch =
+      project.title.toLowerCase().includes(q) ||
+      project.description.toLowerCase().includes(q) ||
+      project.techStack.some(tech => tech.toLowerCase().includes(q));
+
+    return matchesCategory && matchesSearch;
+  });
 
   const getLinkMeta = (url) => {
     if (url.includes('github.com')) {
@@ -169,7 +179,7 @@ const Projects = () => {
             initial="initial"
             whileInView="whileInView"
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-10"
         >
           <motion.div variants={fadeInUp} className="inline-block px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-md mb-6 shadow-sm">
             <h2 className="text-[9px] uppercase tracking-widest font-bold text-blue-400">{t.projects.badge}</h2>
@@ -178,6 +188,28 @@ const Projects = () => {
             {t.projects.title}
           </motion.h3>
         </motion.div>
+
+        {/* Search Bar */}
+        <div className="max-w-md mx-auto mb-8 relative">
+          <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" />
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder={t.projects.searchPlaceholder || "Search projects or tech (e.g. YOLO, React, Python)..."}
+            className="w-full pl-11 pr-10 py-2.5 bg-slate-900/60 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all backdrop-blur-sm shadow-inner"
+          />
+          {searchQuery && (
+            <button
+              type="button"
+              onClick={() => setSearchQuery('')}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-white p-1 cursor-pointer"
+              aria-label="Clear search"
+            >
+              <X size={14} />
+            </button>
+          )}
+        </div>
 
         {/* Category Filter Tabs */}
         <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-12">
@@ -206,78 +238,91 @@ const Projects = () => {
         </div>
 
         {/* Project Cards Grid */}
-        <motion.div 
-          layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          <AnimatePresence>
-            {filteredProjects.map((project) => {
-              const linkMeta = getLinkMeta(project.link);
-              const ProjectIcon = project.icon || Code2;
+        {filteredProjects.length === 0 ? (
+          <div className="py-16 text-center text-slate-400 bg-slate-900/30 border border-slate-800/80 rounded-2xl max-w-md mx-auto">
+            <p className="text-sm font-medium mb-4">{t.projects.noResults || "No projects match your search criteria."}</p>
+            <button
+              type="button"
+              onClick={() => { setSearchQuery(''); setActiveCategory('all'); }}
+              className="px-4 py-2 bg-blue-600/10 hover:bg-blue-600 text-blue-400 hover:text-white border border-blue-500/20 rounded-lg text-xs font-bold transition-all cursor-pointer"
+            >
+              Reset filters
+            </button>
+          </div>
+        ) : (
+          <motion.div 
+            layout
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            <AnimatePresence>
+              {filteredProjects.map((project) => {
+                const linkMeta = getLinkMeta(project.link);
+                const ProjectIcon = project.icon || Code2;
 
-              return (
-                <motion.div
-                  key={project.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.35 }}
-                  whileHover={{ y: -5 }}
-                  className="group relative bg-slate-900/50 border border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500/30 transition-colors duration-300 shadow-xl flex flex-col"
-                >
-                  {/* Card Header visual gradient & icon */}
-                  <div className={`h-24 sm:h-28 bg-gradient-to-br ${project.color} opacity-15 group-hover:opacity-25 transition-all duration-500 flex items-center justify-between px-6`}>
-                    <div className="p-2.5 bg-slate-950/60 rounded-xl border border-white/10 backdrop-blur-sm">
-                      <ProjectIcon className="text-white w-6 h-6" />
+                return (
+                  <motion.div
+                    key={project.id}
+                    layout
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.35 }}
+                    whileHover={{ y: -5 }}
+                    className="group relative bg-slate-900/50 border border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500/30 transition-colors duration-300 shadow-xl flex flex-col backdrop-blur-sm"
+                  >
+                    {/* Card Header visual gradient & icon */}
+                    <div className={`h-24 sm:h-28 bg-gradient-to-br ${project.color} opacity-15 group-hover:opacity-25 transition-all duration-500 flex items-center justify-between px-6`}>
+                      <div className="p-2.5 bg-slate-950/60 rounded-xl border border-white/10 backdrop-blur-sm">
+                        <ProjectIcon className="text-white w-6 h-6" />
+                      </div>
+                      {project.badge && (
+                        <span className="flex items-center gap-1 text-[10px] font-bold text-white bg-slate-950/70 border border-white/10 px-2.5 py-1 rounded-full uppercase tracking-wider backdrop-blur-sm">
+                          <Sparkles size={11} className="text-blue-400" />
+                          {project.badge}
+                        </span>
+                      )}
                     </div>
-                    {project.badge && (
-                      <span className="flex items-center gap-1 text-[10px] font-bold text-white bg-slate-950/70 border border-white/10 px-2.5 py-1 rounded-full uppercase tracking-wider backdrop-blur-sm">
-                        <Sparkles size={11} className="text-blue-400" />
-                        {project.badge}
-                      </span>
-                    )}
-                  </div>
 
-                  <div className="p-6 flex-1 flex flex-col justify-between">
-                    <div>
-                      <div className="flex justify-between items-start mb-3 gap-3">
-                        <h4 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors leading-tight duration-300">
-                          {project.title}
-                        </h4>
-                        <a 
-                          href={project.link}
-                          target="_blank"
-                          rel="noreferrer"
-                          aria-label={`View ${project.title} on ${linkMeta.label}`}
-                          className="flex items-center gap-1.5 text-slate-400 hover:text-white bg-slate-950 hover:bg-blue-600 px-2.5 py-1.5 rounded-lg border border-slate-800 hover:border-blue-500 transition-all text-xs font-bold flex-shrink-0"
-                        >
-                          <linkMeta.icon size={14} />
-                          <span>{linkMeta.label}</span>
-                        </a>
+                    <div className="p-6 flex-1 flex flex-col justify-between">
+                      <div>
+                        <div className="flex justify-between items-start mb-3 gap-3">
+                          <h4 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors leading-tight duration-300">
+                            {project.title}
+                          </h4>
+                          <a 
+                            href={project.link}
+                            target="_blank"
+                            rel="noreferrer"
+                            aria-label={`View ${project.title} on ${linkMeta.label}`}
+                            className="flex items-center gap-1.5 text-slate-400 hover:text-white bg-slate-950 hover:bg-blue-600 px-2.5 py-1.5 rounded-lg border border-slate-800 hover:border-blue-500 transition-all text-xs font-bold flex-shrink-0"
+                          >
+                            <linkMeta.icon size={14} />
+                            <span>{linkMeta.label}</span>
+                          </a>
+                        </div>
+
+                        <p className="text-slate-400 text-xs sm:text-sm mb-5 leading-relaxed">
+                          {project.description}
+                        </p>
                       </div>
 
-                      <p className="text-slate-400 text-xs sm:text-sm mb-5 leading-relaxed">
-                        {project.description}
-                      </p>
+                      <div className="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800/80">
+                        {project.techStack.map((tech, techIndex) => (
+                          <span 
+                            key={techIndex} 
+                            className="text-[9px] font-bold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-md uppercase tracking-widest border border-blue-500/10 group-hover:border-blue-500/30 transition-colors duration-300"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-
-                    <div className="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800/80">
-                      {project.techStack.map((tech, techIndex) => (
-                        <span 
-                          key={techIndex} 
-                          className="text-[9px] font-bold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-md uppercase tracking-widest border border-blue-500/10 group-hover:border-blue-500/30 transition-colors duration-300"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </AnimatePresence>
-        </motion.div>
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
+          </motion.div>
+        )}
       </div>
     </section>
   );

@@ -25,6 +25,9 @@ export const translations = {
       quickBadge1: "Major de Promotion @ FSR",
       quickBadge2: "M.Sc. IT & Intelligent Systems @ INSEA",
       quickBadge3: "11+ Projects in AI & IoT",
+      roles: ["IoT & Smart Systems", "Computer Vision & YOLOv8", "Full-Stack Architecture", "Robotics & Embedded Systems"],
+      profileBadgeInsea: "M.Sc. INSEA",
+      profileBadgeMajor: "Top of Class",
     },
     about: {
       badge: "Professional Background",
@@ -89,6 +92,8 @@ export const translations = {
         demo: "Demo",
         view: "View",
       },
+      searchPlaceholder: "Search projects or tech (e.g. YOLO, React, Python)...",
+      noResults: "No projects match your search criteria.",
       items: {
         neuroscan: "A medical web application utilizing the YOLOv8n model to automatically detect brain tumors in MRI scans with real-time predictions at 81% accuracy.",
         mindspark: "A real-time multiplayer trivia game enabling seamless live competition between users with a fully responsive front-end.",
@@ -200,6 +205,9 @@ export const translations = {
       quickBadge1: "Major de Promotion @ FSR",
       quickBadge2: "Master Info & Systèmes Intelligents @ INSEA",
       quickBadge3: "11+ Projets en IA & IoT",
+      roles: ["IoT & Systèmes Intelligents", "Vision par Ordinateur & YOLOv8", "Architecture Web Full-Stack", "Robotique & Systèmes Embarqués"],
+      profileBadgeInsea: "Master INSEA",
+      profileBadgeMajor: "Major de Promo",
     },
     about: {
       badge: "Parcours Professionnel",
@@ -264,6 +272,8 @@ export const translations = {
         demo: "Démo",
         view: "Voir",
       },
+      searchPlaceholder: "Rechercher par techno ou nom de projet (ex. YOLO, React)...",
+      noResults: "Aucun projet ne correspond à vos critères de recherche.",
       items: {
         neuroscan: "Une application web médicale utilisant le modèle YOLOv8n pour détecter automatiquement les tumeurs cérébrales dans les scanners IRM avec des prédictions en temps réel à 81 % de précision.",
         mindspark: "Un jeu de quiz multijoueur en temps réel permettant une compétition fluide entre les utilisateurs avec un front-end entièrement réactif.",
