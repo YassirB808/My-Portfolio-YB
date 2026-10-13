@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -7,13 +8,27 @@ import Certifications from './components/Certifications';
 import Languages from './components/Languages';
 import Skills from './components/Skills';
 import Contact from './components/Contact';
-import { Download, FileText } from 'lucide-react';
+import { Download, FileText, ArrowUp } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import resumeEng from './assets/Bouita_Yassir_CV_ENG.pdf';
 import resumeFr from './assets/Bouita_Yassir_CV_Fr.pdf';
 import { LanguageProvider, useLanguage } from './context/LanguageContext';
 
 function AppContent() {
   const { t } = useLanguage();
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBackToTop(window.scrollY > 400);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
   
   return (
     <div className="bg-slate-950 text-white min-h-screen selection:bg-blue-500/30">
@@ -28,6 +43,26 @@ function AppContent() {
         <Skills />
         <Contact />
       </main>
+
+      {/* Floating Back to Top Button */}
+      <AnimatePresence>
+        {showBackToTop && (
+          <motion.button
+            type="button"
+            onClick={scrollToTop}
+            initial={{ opacity: 0, scale: 0.8, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: 10 }}
+            whileHover={{ y: -3 }}
+            whileTap={{ scale: 0.95 }}
+            className="fixed bottom-6 right-6 z-50 p-3 bg-blue-600 hover:bg-blue-500 text-white rounded-xl shadow-xl shadow-blue-900/40 border border-blue-400/30 transition-colors cursor-pointer"
+            aria-label="Back to top"
+            title={t.footer.backToTop || "Back to top"}
+          >
+            <ArrowUp size={18} />
+          </motion.button>
+        )}
+      </AnimatePresence>
 
       {/* Simplified Footer */}
       <footer className="py-12 border-t border-slate-900 bg-slate-950">

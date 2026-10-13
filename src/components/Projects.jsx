@@ -1,89 +1,157 @@
-import { motion } from 'framer-motion';
-import { ExternalLink, Code2 } from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ExternalLink, Code2, Github, Linkedin, Cpu, Brain, Globe, Smartphone, Sparkles } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 const Projects = () => {
   const { t } = useLanguage();
+  const [activeCategory, setActiveCategory] = useState('all');
 
   const projectsData = [
     {
+      id: "neuroscan",
       title: "NeuroscanAI",
+      category: "ai",
+      badge: "81% Accuracy",
       description: t.projects.items.neuroscan,
-      techStack: ["FastAPI", "YOLOv8", "OpenCV", "Flask", "Jupyter", "Chart.js"],
-      githubLink: "https://github.com/YassirB808",
-      color: "from-blue-600 to-indigo-600"
+      techStack: ["FastAPI", "YOLOv8", "OpenCV", "Flask", "Chart.js"],
+      link: "https://github.com/YassirB808",
+      color: "from-blue-600 to-indigo-600",
+      icon: Brain
     },
     {
+      id: "academic-orientation",
       title: "Academic Orientation AgenticAI",
+      category: "ai",
+      badge: "Agentic AI",
       description: t.projects.items.academicOrientation,
       techStack: ["Agentic AI", "React", "Python", "Chatbot", "TailwindCSS"],
-      githubLink: "https://www.linkedin.com/feed/update/urn:li:activity:7464358772405235713/",
-      color: "from-sky-500 to-blue-600"
+      link: "https://www.linkedin.com/feed/update/urn:li:activity:7464358772405235713/",
+      color: "from-sky-500 to-blue-600",
+      icon: Brain
     },
     {
-      title: "Mindspark",
-      description: t.projects.items.mindspark,
-      techStack: ["Django", "WebSocket", "Channels", "Bootstrap", "SQLite"],
-      githubLink: "https://github.com/YassirB808",
-      color: "from-indigo-600 to-purple-600"
-    },
-    {
-      title: "Portfolio Project INSEA",
-      description: t.projects.items.portfolioInsea,
-      techStack: ["React.js", "TailwindCSS", "Kotlin", "Vite", "Framer Motion"],
-      githubLink: "https://github.com/YassirB808/PortfolioProjectINSEA",
-      color: "from-purple-600 to-pink-600"
-    },
-    {
-      title: "Gestion Réparation",
-      description: t.projects.items.gestionReparation,
-      techStack: ["Java", "JSP", "Servlets", "HTML/CSS", "JavaScript"],
-      githubLink: "https://www.linkedin.com/feed/update/urn:li:activity:7464694372853301248/",
-      color: "from-teal-500 to-cyan-500"
-    },
-    {
-      title: "Xpenses",
-      description: t.projects.items.xpenses,
-      techStack: ["Flutter", "Dart", "Firebase", "Hive", "OpenAI"],
-      githubLink: "https://github.com/ZikoKai/xpenses",
-      color: "from-pink-500 to-rose-600"
-    },
-    {
+      id: "robotic-arm",
       title: "Gesture-Controlled Robotic Arm",
+      category: "iot",
+      badge: "Hardware & BLE",
       description: t.projects.items.roboticArm,
       techStack: ["Arduino", "C/C++", "Sensors", "Bluetooth", "AutoCAD"],
-      githubLink: "https://www.linkedin.com/in/yassir-bouita-50173828a/details/projects/",
-      color: "from-orange-600 to-amber-500"
+      link: "https://www.linkedin.com/in/yassir-bouita-50173828a/details/projects/",
+      color: "from-orange-600 to-amber-500",
+      icon: Cpu
     },
     {
-      title: "Projet PHP - Page INSEA",
-      description: t.projects.items.projetPhpInsea,
-      techStack: ["PHP", "MySQL", "HTML/CSS", "JavaScript"],
-      githubLink: "https://github.com/YassirB808/ProjetPHP-PageINSEA",
-      color: "from-indigo-500 to-cyan-500"
-    },
-    {
-      title: "Archix-Frontend",
-      description: t.projects.items.archix,
-      techStack: ["TypeScript", "React", "TailwindCSS"],
-      githubLink: "https://github.com/YassirB808",
-      color: "from-blue-400 to-cyan-400"
-    },
-    {
+      id: "aqi",
       title: "AQI-MONITORING",
+      category: "iot",
+      badge: "IoT & Cloud",
       description: t.projects.items.aqi,
       techStack: ["Ubidots", "Flask", "HTML", "Sensors"],
-      githubLink: "https://github.com/YassirB808",
-      color: "from-emerald-600 to-teal-600"
+      link: "https://github.com/YassirB808",
+      color: "from-emerald-600 to-teal-600",
+      icon: Cpu
     },
     {
+      id: "mindspark",
+      title: "Mindspark",
+      category: "web",
+      badge: "Real-Time WebSocket",
+      description: t.projects.items.mindspark,
+      techStack: ["Django", "WebSocket", "Channels", "Bootstrap", "SQLite"],
+      link: "https://github.com/YassirB808",
+      color: "from-indigo-600 to-purple-600",
+      icon: Globe
+    },
+    {
+      id: "portfolio-insea",
+      title: "Portfolio Project INSEA",
+      category: "web",
+      badge: "React & Vite",
+      description: t.projects.items.portfolioInsea,
+      techStack: ["React.js", "TailwindCSS", "Kotlin", "Vite", "Framer Motion"],
+      link: "https://github.com/YassirB808/PortfolioProjectINSEA",
+      color: "from-purple-600 to-pink-600",
+      icon: Globe
+    },
+    {
+      id: "archix",
+      title: "Archix-Frontend",
+      category: "web",
+      badge: "Architecture",
+      description: t.projects.items.archix,
+      techStack: ["TypeScript", "React", "TailwindCSS"],
+      link: "https://github.com/YassirB808",
+      color: "from-blue-400 to-cyan-400",
+      icon: Globe
+    },
+    {
+      id: "gestion-reparation",
+      title: "Gestion Réparation",
+      category: "web",
+      badge: "Java OOP",
+      description: t.projects.items.gestionReparation,
+      techStack: ["Java", "JSP", "Servlets", "HTML/CSS", "JavaScript"],
+      link: "https://www.linkedin.com/feed/update/urn:li:activity:7464694372853301248/",
+      color: "from-teal-500 to-cyan-500",
+      icon: Globe
+    },
+    {
+      id: "projet-php",
+      title: "Projet PHP - Page INSEA",
+      category: "web",
+      badge: "Full-Stack Portal",
+      description: t.projects.items.projetPhpInsea,
+      techStack: ["PHP", "MySQL", "HTML/CSS", "JavaScript"],
+      link: "https://github.com/YassirB808/ProjetPHP-PageINSEA",
+      color: "from-indigo-500 to-cyan-500",
+      icon: Globe
+    },
+    {
+      id: "xpenses",
+      title: "Xpenses",
+      category: "mobile",
+      badge: "Flutter & OpenAI",
+      description: t.projects.items.xpenses,
+      techStack: ["Flutter", "Dart", "Firebase", "Hive", "OpenAI"],
+      link: "https://github.com/ZikoKai/xpenses",
+      color: "from-pink-500 to-rose-600",
+      icon: Smartphone
+    },
+    {
+      id: "handwritten",
       title: "Handwritten Recognition",
+      category: "ai",
+      badge: "Neural Network",
       description: t.projects.items.handwritten,
       techStack: ["Jupyter", "TensorFlow", "Scikit-learn"],
-      githubLink: "https://github.com/YassirB808",
-      color: "from-orange-600 to-red-600"
+      link: "https://github.com/YassirB808",
+      color: "from-orange-600 to-red-600",
+      icon: Brain
     }
   ];
+
+  const categories = [
+    { key: 'all', label: t.projects.categories.all, count: projectsData.length },
+    { key: 'ai', label: t.projects.categories.ai, count: projectsData.filter(p => p.category === 'ai').length },
+    { key: 'iot', label: t.projects.categories.iot, count: projectsData.filter(p => p.category === 'iot').length },
+    { key: 'web', label: t.projects.categories.web, count: projectsData.filter(p => p.category === 'web').length },
+    { key: 'mobile', label: t.projects.categories.mobile, count: projectsData.filter(p => p.category === 'mobile').length },
+  ];
+
+  const filteredProjects = activeCategory === 'all'
+    ? projectsData
+    : projectsData.filter(p => p.category === activeCategory);
+
+  const getLinkMeta = (url) => {
+    if (url.includes('github.com')) {
+      return { icon: Github, label: t.projects.links?.code || 'Code' };
+    }
+    if (url.includes('linkedin.com')) {
+      return { icon: Linkedin, label: t.projects.links?.demo || 'Demo' };
+    }
+    return { icon: ExternalLink, label: t.projects.links?.view || 'View' };
+  };
 
   const fadeInUp = {
     initial: { opacity: 0, y: 15 },
@@ -94,82 +162,122 @@ const Projects = () => {
     }
   };
 
-  const cardHover = {
-    y: -5,
-    transition: { type: "spring", stiffness: 300, damping: 20 }
-  };
-
   return (
     <section id="projects" className="py-24 bg-slate-950 -mt-px">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 max-w-6xl">
         <motion.div 
             initial="initial"
             whileInView="whileInView"
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-12"
         >
           <motion.div variants={fadeInUp} className="inline-block px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-md mb-6 shadow-sm">
             <h2 className="text-[9px] uppercase tracking-widest font-bold text-blue-400">{t.projects.badge}</h2>
           </motion.div>
-          <motion.h3 variants={fadeInUp} transition={{ delay: 0.05 }} className="text-4xl md:text-5xl font-bold text-white leading-tight">{t.projects.title}</motion.h3>
+          <motion.h3 variants={fadeInUp} transition={{ delay: 0.05 }} className="text-4xl md:text-5xl font-bold text-white leading-tight mb-4">
+            {t.projects.title}
+          </motion.h3>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8">
-          {projectsData.map((project, index) => (
-            <motion.div
-              key={index}
-              variants={{
-                initial: { opacity: 0, y: 20 },
-                whileInView: { 
-                  opacity: 1, 
-                  y: 0,
-                  transition: { duration: 0.5, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] }
-                }
-              }}
-              initial="initial"
-              whileInView="whileInView"
-              viewport={{ once: true }}
-              whileHover={cardHover}
-              className="group relative bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500/30 transition-colors duration-300 shadow-xl"
-            >
-              <div className={`h-24 sm:h-32 bg-gradient-to-br ${project.color} opacity-10 group-hover:opacity-20 transition-all duration-500 flex items-center justify-center`}>
-                <Code2 className="text-white opacity-20 group-hover:scale-110 transition-transform duration-500 w-9 h-9 sm:w-12 sm:h-12" />
-              </div>
-
-              <div className="p-5 sm:p-8">
-                <div className="flex justify-between items-start mb-3 sm:mb-4 gap-2">
-                  <h4 className="text-lg sm:text-xl font-bold text-white group-hover:text-blue-400 transition-colors leading-tight duration-300">{project.title}</h4>
-                  <div className="flex gap-2">
-                    <motion.a 
-                        href={project.githubLink}
-                        target="_blank"
-                        rel="noreferrer"
-                        whileHover={{ scale: 1.1 }}
-                        className="text-slate-400 hover:text-white bg-slate-950 p-1.5 sm:p-2 rounded-lg border border-slate-800 hover:border-blue-500/30 transition-all flex-shrink-0"
-                    >
-                      <ExternalLink size={16} className="sm:w-[18px] sm:h-[18px]" />
-                    </motion.a>
-                  </div>
-                </div>
-
-                <p className="text-slate-400 text-sm mb-4 sm:mb-6 leading-relaxed line-clamp-4 sm:line-clamp-none">
-                  {project.description}
-                </p>
-
-                <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                  {project.techStack.map((tech, techIndex) => (
-                    <span 
-                        key={techIndex} 
-                        className="text-[9px] font-bold text-blue-400 bg-blue-500/10 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md uppercase tracking-widest border border-blue-500/10 group-hover:border-blue-500/30 transition-colors duration-300"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          ))}
+        {/* Category Filter Tabs */}
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-12">
+          {categories.map((cat) => {
+            const isActive = activeCategory === cat.key;
+            return (
+              <button
+                key={cat.key}
+                type="button"
+                onClick={() => setActiveCategory(cat.key)}
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 cursor-pointer ${
+                  isActive
+                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/30 border border-blue-500'
+                    : 'bg-slate-900/70 text-slate-400 hover:text-slate-200 border border-slate-800 hover:border-slate-700'
+                }`}
+              >
+                <span>{cat.label}</span>
+                <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${
+                  isActive ? 'bg-white/20 text-white' : 'bg-slate-800 text-slate-400'
+                }`}>
+                  {cat.count}
+                </span>
+              </button>
+            );
+          })}
         </div>
+
+        {/* Project Cards Grid */}
+        <motion.div 
+          layout
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          <AnimatePresence>
+            {filteredProjects.map((project) => {
+              const linkMeta = getLinkMeta(project.link);
+              const ProjectIcon = project.icon || Code2;
+
+              return (
+                <motion.div
+                  key={project.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.35 }}
+                  whileHover={{ y: -5 }}
+                  className="group relative bg-slate-900/50 border border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500/30 transition-colors duration-300 shadow-xl flex flex-col"
+                >
+                  {/* Card Header visual gradient & icon */}
+                  <div className={`h-24 sm:h-28 bg-gradient-to-br ${project.color} opacity-15 group-hover:opacity-25 transition-all duration-500 flex items-center justify-between px-6`}>
+                    <div className="p-2.5 bg-slate-950/60 rounded-xl border border-white/10 backdrop-blur-sm">
+                      <ProjectIcon className="text-white w-6 h-6" />
+                    </div>
+                    {project.badge && (
+                      <span className="flex items-center gap-1 text-[10px] font-bold text-white bg-slate-950/70 border border-white/10 px-2.5 py-1 rounded-full uppercase tracking-wider backdrop-blur-sm">
+                        <Sparkles size={11} className="text-blue-400" />
+                        {project.badge}
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                      <div className="flex justify-between items-start mb-3 gap-3">
+                        <h4 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors leading-tight duration-300">
+                          {project.title}
+                        </h4>
+                        <a 
+                          href={project.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={`View ${project.title} on ${linkMeta.label}`}
+                          className="flex items-center gap-1.5 text-slate-400 hover:text-white bg-slate-950 hover:bg-blue-600 px-2.5 py-1.5 rounded-lg border border-slate-800 hover:border-blue-500 transition-all text-xs font-bold flex-shrink-0"
+                        >
+                          <linkMeta.icon size={14} />
+                          <span>{linkMeta.label}</span>
+                        </a>
+                      </div>
+
+                      <p className="text-slate-400 text-xs sm:text-sm mb-5 leading-relaxed">
+                        {project.description}
+                      </p>
+                    </div>
+
+                    <div className="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800/80">
+                      {project.techStack.map((tech, techIndex) => (
+                        <span 
+                          key={techIndex} 
+                          className="text-[9px] font-bold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-md uppercase tracking-widest border border-blue-500/10 group-hover:border-blue-500/30 transition-colors duration-300"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </section>
   );

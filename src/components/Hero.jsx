@@ -1,12 +1,17 @@
 import { motion } from 'framer-motion';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, Download, FileText, Award } from 'lucide-react';
 import profilePhoto from '../assets/profile_photo.jpeg';
+import resumeEng from '../assets/Bouita_Yassir_CV_ENG.pdf';
+import resumeFr from '../assets/Bouita_Yassir_CV_Fr.pdf';
 import { useLanguage } from '../context/LanguageContext';
 
 const Hero = () => {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
   const standardTransition = { duration: 0.5, ease: [0.22, 1, 0.36, 1] };
   
+  const currentResume = language === 'fr' ? resumeFr : resumeEng;
+  const currentResumeName = language === 'fr' ? 'Bouita_Yassir_CV_Fr.pdf' : 'Bouita_Yassir_CV_ENG.pdf';
+
   const fadeInUp = {
     initial: { opacity: 0, y: 15 },
     animate: { 
@@ -35,11 +40,16 @@ const Hero = () => {
               animate="animate"
               className="text-center lg:text-left order-2 lg:order-1"
             >
+            {/* Seeking Badge with Pulsing Live Dot */}
             <motion.div 
                 variants={fadeInUp}
-                className="inline-flex items-center bg-blue-600/10 border border-blue-500/20 text-blue-400 px-4 py-1 rounded-md text-[10px] font-bold uppercase tracking-widest mb-6 lg:mb-10 shadow-sm"
+                className="inline-flex items-center gap-2 bg-blue-600/10 border border-blue-500/20 text-blue-400 px-3.5 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest mb-6 lg:mb-8 shadow-sm"
             >
-                {t.hero.seeking}
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span>{t.hero.statusAvailable || t.hero.seeking}</span>
             </motion.div>
 
             <motion.h1 
@@ -55,7 +65,7 @@ const Hero = () => {
             <motion.h2 
                 variants={fadeInUp}
                 transition={{ ...standardTransition, delay: 0.1 }}
-                className="text-lg sm:text-xl md:text-2xl font-bold text-slate-200 mb-8 lg:mb-10 flex items-center justify-center lg:justify-start gap-4 italic opacity-80"
+                className="text-lg sm:text-xl md:text-2xl font-bold text-slate-200 mb-6 lg:mb-8 flex items-center justify-center lg:justify-start gap-4 italic opacity-80"
             >
                 <div className="hidden sm:block h-[1px] w-8 lg:w-12 bg-blue-500/30"></div>
                 {t.hero.degree}
@@ -64,33 +74,65 @@ const Hero = () => {
             <motion.p 
                 variants={fadeInUp}
                 transition={{ ...standardTransition, delay: 0.2 }}
-                className="text-base sm:text-lg text-slate-400 max-w-xl mx-auto lg:mx-0 mb-10 lg:mb-12 leading-relaxed font-medium"
+                className="text-base sm:text-lg text-slate-400 max-w-xl mx-auto lg:mx-0 mb-8 lg:mb-10 leading-relaxed font-medium"
             >
                 {t.hero.description}
             </motion.p>
 
+            {/* CTAs including direct CV download */}
             <motion.div 
                 variants={fadeInUp}
                 transition={{ ...standardTransition, delay: 0.3 }}
-                className="flex flex-wrap justify-center lg:justify-start gap-4 sm:gap-6"
+                className="flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 mb-10"
             >
                 <motion.a
                   href="#projects"
                   whileHover={buttonHover}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full sm:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold flex items-center justify-center gap-2 shadow-xl shadow-blue-900/20 uppercase tracking-widest text-[11px] transition-colors duration-300"
+                  className="w-full sm:w-auto px-7 py-3.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold flex items-center justify-center gap-2 shadow-xl shadow-blue-900/20 uppercase tracking-widest text-[11px] transition-colors duration-300"
                 >
-                {t.hero.viewProjects} 
-                <ChevronRight size={16} />
+                  {t.hero.viewProjects} 
+                  <ChevronRight size={16} />
                 </motion.a>
+
+                <motion.a
+                  href={currentResume}
+                  download={currentResumeName}
+                  whileHover={buttonHover}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full sm:w-auto px-7 py-3.5 bg-blue-500/10 hover:bg-blue-600 text-blue-400 hover:text-white border border-blue-500/30 rounded-lg font-bold flex items-center justify-center gap-2 shadow-lg uppercase tracking-widest text-[11px] transition-all duration-300"
+                >
+                  <FileText size={15} />
+                  <span>{t.hero.downloadCv}</span>
+                  <Download size={14} />
+                </motion.a>
+
                 <motion.a
                   href="#contact"
                   whileHover={buttonHover}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full sm:w-auto px-8 py-4 bg-slate-900 border border-slate-800 hover:border-slate-700 text-white rounded-lg font-bold flex items-center justify-center shadow-xl uppercase tracking-widest text-[11px] transition-colors duration-300"
+                  className="w-full sm:w-auto px-7 py-3.5 bg-slate-900 border border-slate-800 hover:border-slate-700 text-white rounded-lg font-bold flex items-center justify-center shadow-xl uppercase tracking-widest text-[11px] transition-colors duration-300"
                 >
-                {t.hero.contactMe}
+                  {t.hero.contactMe}
                 </motion.a>
+            </motion.div>
+
+            {/* Credibility highlights */}
+            <motion.div
+              variants={fadeInUp}
+              transition={{ ...standardTransition, delay: 0.4 }}
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-2 pt-2 border-t border-slate-900 text-xs text-slate-400"
+            >
+              <div className="flex items-center gap-1.5 px-3 py-1 bg-amber-400/5 border border-amber-400/20 text-amber-300 rounded-md font-semibold text-[10px]">
+                <Award size={12} className="text-amber-400" />
+                <span>Major de Promotion (FSR)</span>
+              </div>
+              <div className="flex items-center gap-1.5 px-3 py-1 bg-blue-500/5 border border-blue-500/20 text-blue-300 rounded-md font-semibold text-[10px]">
+                <span>M.Sc. IT & Systems (INSEA)</span>
+              </div>
+              <div className="flex items-center gap-1.5 px-3 py-1 bg-slate-900 border border-slate-800 text-slate-300 rounded-md font-semibold text-[10px]">
+                <span>11+ Projects</span>
+              </div>
             </motion.div>
             </motion.div>
 

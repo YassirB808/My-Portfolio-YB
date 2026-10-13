@@ -12,12 +12,19 @@ export const translations = {
     },
     hero: {
       seeking: "Seeking End-of-Studies Internship (PFE)",
+      statusAvailable: "Available for PFE Internship 2026",
       greeting: "Hi, I'm",
       name: "Yassir Bouita",
       degree: "M.Sc. Student in IT & Intelligent Systems",
       description: "Passionate about bridging hardware and digital intelligence to build smart connected solutions for the future.",
       viewProjects: "View Projects",
       contactMe: "Contact Me",
+      downloadCv: "Download CV",
+      enResume: "Resume (EN)",
+      frResume: "CV (FR)",
+      quickBadge1: "Major de Promotion @ FSR",
+      quickBadge2: "M.Sc. IT & Intelligent Systems @ INSEA",
+      quickBadge3: "11+ Projects in AI & IoT",
     },
     about: {
       badge: "Professional Background",
@@ -70,6 +77,18 @@ export const translations = {
     projects: {
       badge: "My Portfolio",
       title: "Featured Projects",
+      categories: {
+        all: "All Projects",
+        ai: "AI & Machine Learning",
+        iot: "IoT & Embedded",
+        web: "Web & Full-Stack",
+        mobile: "Mobile Development",
+      },
+      links: {
+        code: "Code",
+        demo: "Demo",
+        view: "View",
+      },
       items: {
         neuroscan: "A medical web application utilizing the YOLOv8n model to automatically detect brain tumors in MRI scans with real-time predictions at 81% accuracy.",
         mindspark: "A real-time multiplayer trivia game enabling seamless live competition between users with a fully responsive front-end.",
@@ -96,7 +115,7 @@ export const translations = {
         arabic: "Arabic",
         french: "French",
         english: "English",
-        asl: "ASL",
+        asl: "ASL (Sign Language)",
         spanish: "Spanish",
       },
       levels: {
@@ -122,7 +141,25 @@ export const translations = {
     contact: {
       badge: "Get In Touch",
       title: "Let's Connect",
-      desc: "I am currently looking for new opportunities and collaborations. Feel free to reach out through any of these channels.",
+      desc: "I am actively seeking an end-of-studies internship (PFE) and open to collaborating on innovative projects. Send a message or connect directly.",
+      formTitle: "Send a Message",
+      formSubtitle: "Fill out the form below to get in touch directly.",
+      nameLabel: "Your Name",
+      namePlaceholder: "e.g. John Doe",
+      emailLabel: "Your Email",
+      emailPlaceholder: "john@example.com",
+      subjectLabel: "Subject",
+      subjectPlaceholder: "PFE Internship / Project Opportunity",
+      messageLabel: "Message",
+      messagePlaceholder: "Hello Yassir, I would like to discuss an opportunity...",
+      sendBtn: "Send Message",
+      sendingBtn: "Preparing...",
+      successTitle: "Message Prepared!",
+      successDesc: "Your email draft has been generated. Click 'Send' in your mail client or reach out via LinkedIn/Email directly.",
+      copyEmail: "Copy Email",
+      copied: "Copied!",
+      directConnect: "Direct Channels",
+      location: "Rabat, Morocco",
       labels: {
         email: "Email",
         linkedin: "LinkedIn",
@@ -134,6 +171,7 @@ export const translations = {
       enCv: "English CV",
       frCv: "French CV",
       built: "Built with React & Tailwind",
+      backToTop: "Back to top",
     }
   },
   fr: {
@@ -149,12 +187,19 @@ export const translations = {
     },
     hero: {
       seeking: "À la recherche d'un Stage de Fin d'Études (PFE)",
+      statusAvailable: "Disponible pour Stage PFE 2026",
       greeting: "Salut, je suis",
       name: "Yassir Bouita",
       degree: "Étudiant en 1ère année Master Systèmes d'Information et Systèmes Intelligents",
       description: "Passionné par la fusion du matériel et de l'intelligence numérique pour construire des solutions connectées intelligentes pour l'avenir.",
       viewProjects: "Voir Projets",
       contactMe: "Me Contacter",
+      downloadCv: "Télécharger CV",
+      enResume: "CV (Anglais)",
+      frResume: "CV (Français)",
+      quickBadge1: "Major de Promotion @ FSR",
+      quickBadge2: "Master Info & Systèmes Intelligents @ INSEA",
+      quickBadge3: "11+ Projets en IA & IoT",
     },
     about: {
       badge: "Parcours Professionnel",
@@ -207,6 +252,18 @@ export const translations = {
     projects: {
       badge: "Mon Portfolio",
       title: "Projets Mis en Avant",
+      categories: {
+        all: "Tous les Projets",
+        ai: "IA & Machine Learning",
+        iot: "IoT & Embarqué",
+        web: "Web & Full-Stack",
+        mobile: "Développement Mobile",
+      },
+      links: {
+        code: "Code",
+        demo: "Démo",
+        view: "Voir",
+      },
       items: {
         neuroscan: "Une application web médicale utilisant le modèle YOLOv8n pour détecter automatiquement les tumeurs cérébrales dans les scanners IRM avec des prédictions en temps réel à 81 % de précision.",
         mindspark: "Un jeu de quiz multijoueur en temps réel permettant une compétition fluide entre les utilisateurs avec un front-end entièrement réactif.",
@@ -233,7 +290,7 @@ export const translations = {
         arabic: "Arabe",
         french: "Français",
         english: "Anglais",
-        asl: "LSF",
+        asl: "LSF (Langue des Signes)",
         spanish: "Espagnol",
       },
       levels: {
@@ -259,7 +316,25 @@ export const translations = {
     contact: {
       badge: "Contact",
       title: "Connectons-nous",
-      desc: "Je suis actuellement à la recherche de nouvelles opportunités et collaborations. N'hésitez pas à me contacter via l'un de ces canaux.",
+      desc: "Je recherche activement un stage de fin d'études (PFE) et suis ouvert à collaborer sur des projets innovants. Envoyez un message ou contactez-moi directement.",
+      formTitle: "Envoyer un Message",
+      formSubtitle: "Remplissez le formulaire ci-dessous pour me joindre directement.",
+      nameLabel: "Votre Nom",
+      namePlaceholder: "ex. Jean Dupont",
+      emailLabel: "Votre E-mail",
+      emailPlaceholder: "jean@example.com",
+      subjectLabel: "Objet",
+      subjectPlaceholder: "Stage PFE / Opportunité de Projet",
+      messageLabel: "Message",
+      messagePlaceholder: "Bonjour Yassir, je souhaite échanger au sujet de...",
+      sendBtn: "Envoyer le Message",
+      sendingBtn: "Préparation...",
+      successTitle: "Message Préparé !",
+      successDesc: "Votre brouillon d'e-mail a été préparé. Cliquez sur 'Envoyer' dans votre boîte mail ou contactez-moi directement sur LinkedIn/E-mail.",
+      copyEmail: "Copier l'e-mail",
+      copied: "Copié !",
+      directConnect: "Canaux Directs",
+      location: "Rabat, Maroc",
       labels: {
         email: "E-mail",
         linkedin: "LinkedIn",
@@ -271,6 +346,7 @@ export const translations = {
       enCv: "CV Anglais",
       frCv: "CV Français",
       built: "Conçu avec React & Tailwind",
+      backToTop: "Haut de page",
     }
   }
 };
