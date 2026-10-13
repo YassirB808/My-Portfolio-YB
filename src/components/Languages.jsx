@@ -52,7 +52,7 @@ const Languages = () => {
               initial="initial"
               whileInView="whileInView"
               viewport={{ once: true }}
-              className="bg-slate-900/50 border border-slate-800 p-8 rounded-2xl hover:border-blue-500/30 transition-all duration-300 group"
+              className="glass-card p-8 rounded-2xl group"
             >
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-4">

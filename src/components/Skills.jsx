@@ -98,7 +98,7 @@ const Skills = () => {
                 whileInView="whileInView"
                 viewport={{ once: true }}
                 whileHover={{ y: -4 }}
-                className="p-6 bg-slate-900/40 border border-slate-800 rounded-2xl hover:border-blue-500/30 transition-all duration-300 group flex flex-col justify-between"
+                className="p-6 glass-card rounded-2xl group flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center gap-3 mb-5">

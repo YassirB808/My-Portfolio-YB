@@ -84,7 +84,7 @@ const Certifications = () => {
               whileInView="whileInView"
               viewport={{ once: true }}
               whileHover={cardHover}
-              className="group relative bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500/30 transition-colors duration-300 shadow-xl"
+              className="group relative glass-card rounded-2xl overflow-hidden"
             >
               <div className={`h-24 bg-gradient-to-br ${cert.color} opacity-10 group-hover:opacity-20 transition-all duration-500 flex items-center justify-center p-6`}>
                 <img 

@@ -76,7 +76,7 @@ const Header = () => {
     return (
         <header 
             className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
-                isScrolled ? 'py-3 bg-slate-950/90 backdrop-blur-md shadow-xl border-b border-slate-900/80' : 'py-5 bg-transparent'
+                isScrolled ? 'py-3.5 bg-slate-950/80 backdrop-blur-xl shadow-xl shadow-black/80' : 'py-5 bg-transparent'
             }`}
         >
             <nav className="container mx-auto px-6 flex justify-between items-center">

@@ -222,8 +222,8 @@ const Projects = () => {
                 onClick={() => setActiveCategory(cat.key)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 cursor-pointer ${
                   isActive
-                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/30 border border-blue-500'
-                    : 'bg-slate-900/70 text-slate-400 hover:text-slate-200 border border-slate-800 hover:border-slate-700'
+                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/30 border border-blue-400/40'
+                    : 'glass-pill text-slate-400 hover:text-slate-200'
                 }`}
               >
                 <span>{cat.label}</span>
@@ -239,7 +239,7 @@ const Projects = () => {
 
         {/* Project Cards Grid */}
         {filteredProjects.length === 0 ? (
-          <div className="py-16 text-center text-slate-400 bg-slate-900/30 border border-slate-800/80 rounded-2xl max-w-md mx-auto">
+          <div className="py-16 text-center text-slate-400 glass-card rounded-2xl max-w-md mx-auto">
             <p className="text-sm font-medium mb-4">{t.projects.noResults || "No projects match your search criteria."}</p>
             <button
               type="button"
@@ -268,7 +268,7 @@ const Projects = () => {
                     exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.35 }}
                     whileHover={{ y: -5 }}
-                    className="group relative bg-slate-900/50 border border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500/30 transition-colors duration-300 shadow-xl flex flex-col backdrop-blur-sm"
+                    className="group relative glass-card rounded-2xl overflow-hidden flex flex-col"
                   >
                     {/* Card Header visual gradient & icon */}
                     <div className={`h-24 sm:h-28 bg-gradient-to-br ${project.color} opacity-15 group-hover:opacity-25 transition-all duration-500 flex items-center justify-between px-6`}>

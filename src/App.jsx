@@ -51,8 +51,16 @@ function AppContent() {
         }}
       />
 
+      {/* Ambient Aurora / Mesh Glows for Visible Glassmorphism */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div className="absolute top-[8%] left-[10%] w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[140px]"></div>
+        <div className="absolute top-[32%] right-[5%] w-[600px] h-[600px] bg-indigo-600/10 rounded-full blur-[160px]"></div>
+        <div className="absolute top-[58%] left-[5%] w-[550px] h-[550px] bg-purple-600/10 rounded-full blur-[150px]"></div>
+        <div className="absolute top-[82%] right-[10%] w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[160px]"></div>
+      </div>
+
       <Header />
-      <main className="bg-slate-950 relative z-10">
+      <main className="relative z-10">
         <Hero />
         <About />
         <Experience />

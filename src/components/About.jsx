@@ -60,7 +60,7 @@ const About = () => {
                             <motion.div 
                                 variants={fadeInUp}
                                 transition={{ delay: 0.2 }}
-                                className="p-6 sm:p-8 bg-slate-900 border-l-2 border-blue-500 rounded-r-xl font-medium text-slate-300 italic shadow-lg group hover:border-blue-400 transition-colors duration-500"
+                                className="p-6 sm:p-8 glass-panel border-l-4 border-l-blue-500 rounded-2xl font-medium text-slate-300 italic shadow-xl group"
                             >
                                 {t.about.internship}
                             </motion.div>
@@ -75,9 +75,9 @@ const About = () => {
                                     variants={{
                                         initial: { opacity: 0, y: 10, scale: 0.95 },
                                         whileInView: { 
-                                            opacity: 1, 
+                                             opacity: 1, 
                                             y: 0, 
-                                            scale: 1,
+                                            scale: 1, 
                                             transition: { duration: 0.4, delay: idx * 0.05, ease: [0.22, 1, 0.36, 1] }
                                         }
                                     }}
@@ -85,14 +85,14 @@ const About = () => {
                                     whileInView="whileInView"
                                     viewport={{ once: true }}
                                     whileHover={cardHover}
-                                    className="p-5 sm:p-6 bg-slate-900 border border-slate-800 rounded-xl flex flex-col gap-4 shadow-sm hover:border-blue-500/30 transition-colors duration-300 group"
+                                    className="p-5 sm:p-6 glass-card rounded-2xl flex flex-col gap-4 group"
                                 >
-                                    <div className="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex items-center justify-center group-hover:bg-blue-600/10 transition-colors shadow-sm">
-                                        <item.icon className="text-blue-500 group-hover:scale-110 transition-transform duration-500" size={18} />
+                                    <div className="w-10 h-10 bg-slate-950/80 border border-white/10 rounded-xl flex items-center justify-center group-hover:bg-blue-600/20 transition-colors shadow-sm">
+                                        <item.icon className="text-blue-400 group-hover:scale-110 transition-transform duration-500" size={18} />
                                     </div>
                                     <div>
-                                        <p className="text-[9px] uppercase font-bold text-slate-500 tracking-wider mb-1.5">{item.label}</p>
-                                        <p className="text-xs sm:text-sm font-semibold text-slate-300 leading-tight group-hover:text-blue-400 transition-colors duration-500">{item.text}</p>
+                                        <p className="text-[9px] uppercase font-bold text-slate-400 tracking-wider mb-1.5">{item.label}</p>
+                                        <p className="text-xs sm:text-sm font-semibold text-slate-200 leading-tight group-hover:text-blue-300 transition-colors duration-500">{item.text}</p>
                                     </div>
                                 </motion.div>
                             ))}
@@ -102,7 +102,7 @@ const About = () => {
                                     initial: { opacity: 0, y: 15 },
                                     whileInView: { 
                                         opacity: 1, 
-                                        y: 0,
+                                        y: 0, 
                                         transition: { duration: 0.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] }
                                     }
                                 }}
@@ -110,7 +110,7 @@ const About = () => {
                                 whileInView="whileInView"
                                 viewport={{ once: true }}
                                 whileHover={{ y: -4 }}
-                                className="p-6 bg-blue-600 rounded-xl flex flex-col justify-between sm:col-span-2 shadow-lg shadow-blue-900/10 group overflow-hidden relative transition-colors duration-500"
+                                className="p-6 bg-gradient-to-br from-blue-600/90 to-indigo-700/90 border border-white/20 rounded-2xl flex flex-col justify-between sm:col-span-2 shadow-2xl backdrop-blur-xl group overflow-hidden relative"
                             >
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 blur-3xl -z-10 group-hover:bg-white/10 transition-all duration-700"></div>
                                 <div className="text-white/80 text-[10px] font-bold uppercase tracking-widest mb-4 relative z-10">{t.about.focus}</div>

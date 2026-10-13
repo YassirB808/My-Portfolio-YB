@@ -102,7 +102,7 @@ const Experience = () => {
                   <motion.div 
                     whileHover={{ y: -5 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className={`bg-slate-900/40 border ${item.isOngoing ? 'border-emerald-500/30' : 'border-slate-800/60'} p-6 md:p-8 rounded-2xl shadow-xl group hover:border-blue-500/30 transition-colors duration-300 relative overflow-hidden backdrop-blur-sm`}
+                    className={`glass-card ${item.isOngoing ? '!border-emerald-500/40 shadow-emerald-500/10' : ''} p-6 md:p-8 rounded-2xl relative overflow-hidden`}
                   >
                     <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     

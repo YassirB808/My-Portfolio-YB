@@ -171,7 +171,7 @@ const Contact = () => {
                         transition={standardTransition}
                         className="lg:col-span-5 flex flex-col gap-6"
                     >
-                        <div className="bg-slate-900/60 border border-slate-800 p-8 rounded-2xl shadow-xl backdrop-blur-sm">
+                        <div className="glass-panel p-8 rounded-2xl shadow-xl">
                             <h4 className="text-xl font-bold text-white mb-2">{t.contact.directConnect || "Direct Channels"}</h4>
                             <p className="text-slate-400 text-sm mb-6 leading-relaxed">
                                 Feel free to connect directly via email or LinkedIn. I am prompt in answering professional inquiries.
@@ -181,7 +181,7 @@ const Contact = () => {
                                 {contactInfo.map((item, idx) => (
                                     <div
                                         key={idx}
-                                        className="flex items-center gap-4 bg-slate-950 border border-slate-800 p-4 rounded-xl hover:border-blue-500/30 transition-all duration-300 group"
+                                        className="flex items-center gap-4 glass-card p-4 rounded-xl group"
                                     >
                                         <div className="w-11 h-11 bg-slate-900 border border-slate-800 rounded-lg flex items-center justify-center group-hover:bg-blue-600/10 transition-colors duration-300 flex-shrink-0">
                                             <item.icon size={18} className="text-blue-500 group-hover:scale-110 transition-transform duration-300" />
@@ -253,7 +253,7 @@ const Contact = () => {
                         transition={standardTransition}
                         className="lg:col-span-7"
                     >
-                        <div className="bg-slate-900/60 border border-slate-800 p-8 sm:p-10 rounded-2xl shadow-xl backdrop-blur-sm">
+                        <div className="glass-panel p-8 sm:p-10 rounded-2xl shadow-xl">
                             <h4 className="text-xl font-bold text-white mb-2">{t.contact.formTitle}</h4>
                             <p className="text-slate-400 text-sm mb-8 leading-relaxed">
                                 {t.contact.formSubtitle}
