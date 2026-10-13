@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, Award } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import ibmLogo from '../assets/ibm.png';
 import microsoftLogo from '../assets/microsoft.png';
@@ -101,19 +101,16 @@ const Certifications = () => {
                 
                 <p className="text-slate-400 text-xs font-semibold mb-4 uppercase tracking-wider">{cert.issuer}</p>
 
-                <div className="flex justify-between items-center mt-auto">
-                    <div className="p-2 bg-blue-500/10 rounded-lg border border-blue-500/20 text-blue-400">
-                        <Award size={16} />
-                    </div>
-                    <motion.a 
+                <div className="pt-4 border-t border-slate-850 mt-auto flex justify-end">
+                    <a 
                         href={cert.link}
                         target="_blank"
                         rel="noreferrer"
-                        whileHover={{ scale: 1.1 }}
-                        className="text-slate-400 hover:text-white bg-slate-950 p-2 rounded-lg border border-slate-800 hover:border-blue-500/30 transition-all flex items-center gap-2 text-xs"
+                        className="text-slate-400 hover:text-white hover:border-blue-500/40 transition-colors inline-flex items-center gap-1.5 text-xs font-semibold py-1.5 px-3 rounded-lg bg-slate-900/60 border border-slate-800"
                     >
-                      {t.certifications.verify} <ExternalLink size={14} />
-                    </motion.a>
+                      <span>{t.certifications.verify}</span>
+                      <ExternalLink size={12} className="opacity-70" />
+                    </a>
                 </div>
               </div>
             </motion.div>

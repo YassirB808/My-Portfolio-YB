@@ -1,15 +1,14 @@
 import { motion } from 'framer-motion';
-import { MapPin, Search, GraduationCap, Award } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 const About = () => {
     const { t } = useLanguage();
     
     const highlights = [
-        { icon: MapPin, text: 'Rabat, Morocco', label: t.about.highlights.location },
-        { icon: Search, text: t.about.highlights.seeking, label: t.about.highlights.status },
-        { icon: GraduationCap, text: t.about.highlights.msc, label: t.about.highlights.degree },
-        { icon: Award, text: t.about.highlights.electronics, label: t.about.highlights.skills },
+        { text: 'Rabat, Morocco', label: t.about.highlights.location },
+        { text: t.about.highlights.seeking, label: t.about.highlights.status },
+        { text: t.about.highlights.msc, label: t.about.highlights.degree },
+        { text: t.about.highlights.electronics, label: t.about.highlights.skills },
     ];
 
     const standardTransition = { duration: 0.5, ease: [0.22, 1, 0.36, 1] };
@@ -85,15 +84,10 @@ const About = () => {
                                     whileInView="whileInView"
                                     viewport={{ once: true }}
                                     whileHover={cardHover}
-                                    className="p-5 sm:p-6 glass-card rounded-2xl flex flex-col gap-4 group"
+                                    className="p-5 sm:p-6 glass-card rounded-2xl flex flex-col justify-between group"
                                 >
-                                    <div className="w-10 h-10 bg-slate-950/80 border border-white/10 rounded-xl flex items-center justify-center group-hover:bg-blue-600/20 transition-colors shadow-sm">
-                                        <item.icon className="text-blue-400 group-hover:scale-110 transition-transform duration-500" size={18} />
-                                    </div>
-                                    <div>
-                                        <p className="text-[9px] uppercase font-bold text-slate-400 tracking-wider mb-1.5">{item.label}</p>
-                                        <p className="text-xs sm:text-sm font-semibold text-slate-200 leading-tight group-hover:text-blue-300 transition-colors duration-500">{item.text}</p>
-                                    </div>
+                                    <div className="text-[10px] uppercase font-bold text-blue-400 tracking-wider mb-2">{item.label}</div>
+                                    <p className="text-sm font-semibold text-slate-200 leading-snug group-hover:text-white transition-colors duration-300">{item.text}</p>
                                 </motion.div>
                             ))}
 

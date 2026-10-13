@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Code2, Github, Linkedin, Cpu, Brain, Globe, Smartphone, Sparkles, Search, X } from 'lucide-react';
+import { ExternalLink, Github, Linkedin, Search, X } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 const Projects = () => {
@@ -16,9 +16,7 @@ const Projects = () => {
       badge: "81% Accuracy",
       description: t.projects.items.neuroscan,
       techStack: ["FastAPI", "YOLOv8", "OpenCV", "Flask", "Chart.js"],
-      link: "https://github.com/YassirB808",
-      color: "from-blue-600 to-indigo-600",
-      icon: Brain
+      link: "https://github.com/YassirB808"
     },
     {
       id: "academic-orientation",
@@ -27,9 +25,7 @@ const Projects = () => {
       badge: "Agentic AI",
       description: t.projects.items.academicOrientation,
       techStack: ["Agentic AI", "React", "Python", "Chatbot", "TailwindCSS"],
-      link: "https://www.linkedin.com/feed/update/urn:li:activity:7464358772405235713/",
-      color: "from-sky-500 to-blue-600",
-      icon: Brain
+      link: "https://www.linkedin.com/feed/update/urn:li:activity:7464358772405235713/"
     },
     {
       id: "robotic-arm",
@@ -38,9 +34,7 @@ const Projects = () => {
       badge: "Hardware & BLE",
       description: t.projects.items.roboticArm,
       techStack: ["Arduino", "C/C++", "Sensors", "Bluetooth", "AutoCAD"],
-      link: "https://www.linkedin.com/in/yassir-bouita-50173828a/details/projects/",
-      color: "from-orange-600 to-amber-500",
-      icon: Cpu
+      link: "https://www.linkedin.com/in/yassir-bouita-50173828a/details/projects/"
     },
     {
       id: "aqi",
@@ -49,9 +43,7 @@ const Projects = () => {
       badge: "IoT & Cloud",
       description: t.projects.items.aqi,
       techStack: ["Ubidots", "Flask", "HTML", "Sensors"],
-      link: "https://github.com/YassirB808",
-      color: "from-emerald-600 to-teal-600",
-      icon: Cpu
+      link: "https://github.com/YassirB808"
     },
     {
       id: "mindspark",
@@ -60,9 +52,7 @@ const Projects = () => {
       badge: "Real-Time WebSocket",
       description: t.projects.items.mindspark,
       techStack: ["Django", "WebSocket", "Channels", "Bootstrap", "SQLite"],
-      link: "https://github.com/YassirB808",
-      color: "from-indigo-600 to-purple-600",
-      icon: Globe
+      link: "https://github.com/YassirB808"
     },
     {
       id: "portfolio-insea",
@@ -71,9 +61,7 @@ const Projects = () => {
       badge: "React & Vite",
       description: t.projects.items.portfolioInsea,
       techStack: ["React.js", "TailwindCSS", "Kotlin", "Vite", "Framer Motion"],
-      link: "https://github.com/YassirB808/PortfolioProjectINSEA",
-      color: "from-purple-600 to-pink-600",
-      icon: Globe
+      link: "https://github.com/YassirB808/PortfolioProjectINSEA"
     },
     {
       id: "archix",
@@ -82,9 +70,7 @@ const Projects = () => {
       badge: "Architecture",
       description: t.projects.items.archix,
       techStack: ["TypeScript", "React", "TailwindCSS"],
-      link: "https://github.com/YassirB808",
-      color: "from-blue-400 to-cyan-400",
-      icon: Globe
+      link: "https://github.com/YassirB808"
     },
     {
       id: "gestion-reparation",
@@ -93,9 +79,7 @@ const Projects = () => {
       badge: "Java OOP",
       description: t.projects.items.gestionReparation,
       techStack: ["Java", "JSP", "Servlets", "HTML/CSS", "JavaScript"],
-      link: "https://www.linkedin.com/feed/update/urn:li:activity:7464694372853301248/",
-      color: "from-teal-500 to-cyan-500",
-      icon: Globe
+      link: "https://www.linkedin.com/feed/update/urn:li:activity:7464694372853301248/"
     },
     {
       id: "projet-php",
@@ -104,9 +88,7 @@ const Projects = () => {
       badge: "Full-Stack Portal",
       description: t.projects.items.projetPhpInsea,
       techStack: ["PHP", "MySQL", "HTML/CSS", "JavaScript"],
-      link: "https://github.com/YassirB808/ProjetPHP-PageINSEA",
-      color: "from-indigo-500 to-cyan-500",
-      icon: Globe
+      link: "https://github.com/YassirB808/ProjetPHP-PageINSEA"
     },
     {
       id: "xpenses",
@@ -115,9 +97,7 @@ const Projects = () => {
       badge: "Flutter & OpenAI",
       description: t.projects.items.xpenses,
       techStack: ["Flutter", "Dart", "Firebase", "Hive", "OpenAI"],
-      link: "https://github.com/ZikoKai/xpenses",
-      color: "from-pink-500 to-rose-600",
-      icon: Smartphone
+      link: "https://github.com/ZikoKai/xpenses"
     },
     {
       id: "handwritten",
@@ -126,9 +106,7 @@ const Projects = () => {
       badge: "Neural Network",
       description: t.projects.items.handwritten,
       techStack: ["Jupyter", "TensorFlow", "Scikit-learn"],
-      link: "https://github.com/YassirB808",
-      color: "from-orange-600 to-red-600",
-      icon: Brain
+      link: "https://github.com/YassirB808"
     }
   ];
 
@@ -173,7 +151,7 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-24 bg-slate-950 -mt-px">
+    <section id="projects" className="py-24 relative -mt-px">
       <div className="container mx-auto px-6 max-w-6xl">
         <motion.div 
             initial="initial"
@@ -191,13 +169,13 @@ const Projects = () => {
 
         {/* Search Bar */}
         <div className="max-w-md mx-auto mb-8 relative">
-          <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" />
+          <Search size={15} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder={t.projects.searchPlaceholder || "Search projects or tech (e.g. YOLO, React, Python)..."}
-            className="w-full pl-11 pr-10 py-2.5 bg-slate-900/60 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all backdrop-blur-sm shadow-inner"
+            placeholder={t.projects.searchPlaceholder || "Search projects or tech..."}
+            className="w-full pl-11 pr-10 py-2.5 bg-slate-900/60 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-all backdrop-blur-sm"
           />
           {searchQuery && (
             <button
@@ -212,7 +190,7 @@ const Projects = () => {
         </div>
 
         {/* Category Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-12">
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
           {categories.map((cat) => {
             const isActive = activeCategory === cat.key;
             return (
@@ -220,9 +198,9 @@ const Projects = () => {
                 key={cat.key}
                 type="button"
                 onClick={() => setActiveCategory(cat.key)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 cursor-pointer ${
+                className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 cursor-pointer ${
                   isActive
-                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/30 border border-blue-400/40'
+                    ? 'bg-blue-600 text-white shadow-md shadow-blue-900/30'
                     : 'glass-pill text-slate-400 hover:text-slate-200'
                 }`}
               >
@@ -257,7 +235,6 @@ const Projects = () => {
             <AnimatePresence>
               {filteredProjects.map((project) => {
                 const linkMeta = getLinkMeta(project.link);
-                const ProjectIcon = project.icon || Code2;
 
                 return (
                   <motion.div
@@ -266,56 +243,49 @@ const Projects = () => {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.35 }}
-                    whileHover={{ y: -5 }}
-                    className="group relative glass-card rounded-2xl overflow-hidden flex flex-col"
+                    transition={{ duration: 0.3 }}
+                    whileHover={{ y: -4 }}
+                    className="group relative glass-card rounded-2xl overflow-hidden flex flex-col justify-between p-6 sm:p-7"
                   >
-                    {/* Card Header visual gradient & icon */}
-                    <div className={`h-24 sm:h-28 bg-gradient-to-br ${project.color} opacity-15 group-hover:opacity-25 transition-all duration-500 flex items-center justify-between px-6`}>
-                      <div className="p-2.5 bg-slate-950/60 rounded-xl border border-white/10 backdrop-blur-sm">
-                        <ProjectIcon className="text-white w-6 h-6" />
+                    <div>
+                      {/* Top Header: Badge & Destination Link */}
+                      <div className="flex items-center justify-between mb-4 gap-2">
+                        {project.badge ? (
+                          <span className="text-[10px] font-semibold text-blue-400 bg-blue-500/10 border border-blue-500/20 px-2 py-0.5 rounded-md uppercase tracking-wider">
+                            {project.badge}
+                          </span>
+                        ) : <span />}
+
+                        <a 
+                          href={project.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={`View ${project.title} on ${linkMeta.label}`}
+                          className="flex items-center gap-1.5 text-slate-400 hover:text-white bg-slate-950/70 hover:bg-blue-600 px-2.5 py-1 rounded-lg border border-slate-800 hover:border-blue-500 transition-all text-xs font-medium"
+                        >
+                          <linkMeta.icon size={13} />
+                          <span>{linkMeta.label}</span>
+                        </a>
                       </div>
-                      {project.badge && (
-                        <span className="flex items-center gap-1 text-[10px] font-bold text-white bg-slate-950/70 border border-white/10 px-2.5 py-1 rounded-full uppercase tracking-wider backdrop-blur-sm">
-                          <Sparkles size={11} className="text-blue-400" />
-                          {project.badge}
-                        </span>
-                      )}
+
+                      <h4 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors leading-tight mb-3">
+                        {project.title}
+                      </h4>
+
+                      <p className="text-slate-400 text-xs sm:text-sm mb-6 leading-relaxed">
+                        {project.description}
+                      </p>
                     </div>
 
-                    <div className="p-6 flex-1 flex flex-col justify-between">
-                      <div>
-                        <div className="flex justify-between items-start mb-3 gap-3">
-                          <h4 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors leading-tight duration-300">
-                            {project.title}
-                          </h4>
-                          <a 
-                            href={project.link}
-                            target="_blank"
-                            rel="noreferrer"
-                            aria-label={`View ${project.title} on ${linkMeta.label}`}
-                            className="flex items-center gap-1.5 text-slate-400 hover:text-white bg-slate-950 hover:bg-blue-600 px-2.5 py-1.5 rounded-lg border border-slate-800 hover:border-blue-500 transition-all text-xs font-bold flex-shrink-0"
-                          >
-                            <linkMeta.icon size={14} />
-                            <span>{linkMeta.label}</span>
-                          </a>
-                        </div>
-
-                        <p className="text-slate-400 text-xs sm:text-sm mb-5 leading-relaxed">
-                          {project.description}
-                        </p>
-                      </div>
-
-                      <div className="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800/80">
-                        {project.techStack.map((tech, techIndex) => (
-                          <span 
-                            key={techIndex} 
-                            className="text-[9px] font-bold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-md uppercase tracking-widest border border-blue-500/10 group-hover:border-blue-500/30 transition-colors duration-300"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
+                    <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/5">
+                      {project.techStack.map((tech, techIndex) => (
+                        <span 
+                          key={techIndex} 
+                          className="text-[10px] font-medium text-slate-400 bg-slate-950/60 px-2 py-0.5 rounded border border-slate-800/80"
+                        >
+                          {tech}
+                        </span>
+                      ))}
                     </div>
                   </motion.div>
                 );

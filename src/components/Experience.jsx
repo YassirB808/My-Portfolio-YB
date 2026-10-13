@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { Briefcase, GraduationCap, MapPin, Calendar } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 import ddsLogo from '../assets/digital_data_service.png';
@@ -93,9 +92,8 @@ const Experience = () => {
                 transition={{ ...standardTransition, delay: 0.1 }}
                 className={`relative flex flex-col md:flex-row gap-6 md:gap-0 ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
               >
-                <div className={`absolute left-0 md:left-1/2 md:-translate-x-1/2 top-0 w-8 h-8 bg-slate-950 border ${item.isOngoing ? 'border-emerald-500/80 shadow-emerald-500/30' : 'border-slate-700'} rounded-full z-10 flex items-center justify-center shadow-lg group`}>
-                  <div className={`absolute inset-0 ${item.isOngoing ? 'bg-emerald-500/20' : 'bg-blue-500/20'} rounded-full ${item.isOngoing ? 'scale-100' : 'scale-0'} group-hover:scale-100 transition-transform duration-500`}></div>
-                  {item.type === 'work' ? <Briefcase size={14} className={item.isOngoing ? "text-emerald-400 relative z-10" : "text-blue-500 relative z-10"} /> : <GraduationCap size={14} className={item.isOngoing ? "text-emerald-400 relative z-10" : "text-blue-500 relative z-10"} />}
+                <div className="absolute left-2.5 md:left-1/2 md:-translate-x-1/2 top-8 z-10">
+                  <div className={`w-3.5 h-3.5 rounded-full ${item.isOngoing ? 'bg-emerald-400 ring-4 ring-emerald-500/20 shadow-[0_0_12px_rgba(52,211,153,0.5)]' : 'bg-slate-800 ring-4 ring-slate-950 border border-slate-700'}`}></div>
                 </div>
 
                 <div className={`pl-12 md:w-1/2 ${idx % 2 === 0 ? 'md:pl-12' : 'md:pl-0 md:pr-12'}`}>
@@ -112,20 +110,18 @@ const Experience = () => {
                         </div>
                         <div>
                             <div className="flex flex-wrap items-center gap-2 mb-2">
-                              <span className={`flex items-center gap-1.5 text-[9px] font-bold ${item.isOngoing ? 'text-emerald-400 bg-emerald-500/10 border border-emerald-500/20' : 'text-blue-500 bg-blue-500/10'} px-2 py-0.5 rounded-md uppercase tracking-widest w-fit`}>
-                                  {item.isOngoing ? (
+                              <span className={`flex items-center gap-1.5 text-[9px] font-bold ${item.isOngoing ? 'text-emerald-400 bg-emerald-500/10 border border-emerald-500/20' : 'text-blue-400 bg-blue-500/10 border border-blue-500/20'} px-2 py-0.5 rounded-md uppercase tracking-widest w-fit`}>
+                                  {item.isOngoing && (
                                     <span className="relative flex h-1.5 w-1.5">
                                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                                       <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
                                     </span>
-                                  ) : (
-                                    <Calendar size={10} />
                                   )}
                                   {item.period}
                               </span>
                               {item.honor && (
                                 <span className="flex items-center gap-1 text-[9px] font-bold text-amber-400 bg-amber-400/10 border border-amber-400/20 px-2 py-0.5 rounded-md uppercase tracking-widest w-fit shadow-sm">
-                                  🏆 {item.honor}
+                                  {item.honor}
                                 </span>
                               )}
                             </div>
@@ -137,8 +133,8 @@ const Experience = () => {
                       <p className="text-slate-300 font-bold text-xs tracking-tight flex items-center gap-2 italic">
                         {item.type === 'work' ? item.company : item.institution}
                       </p>
-                      <span className="flex items-center gap-1 text-[10px] font-medium text-slate-500 tracking-wide">
-                        <MapPin size={10} /> {item.location}
+                      <span className="text-[10px] font-medium text-slate-500 tracking-wide">
+                        {item.location}
                       </span>
                     </div>
                     

@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { Languages as LangIcon } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 const Languages = () => {
@@ -52,18 +51,11 @@ const Languages = () => {
               initial="initial"
               whileInView="whileInView"
               viewport={{ once: true }}
-              className="glass-card p-8 rounded-2xl group"
+              className="glass-card p-6 sm:p-7 rounded-2xl group"
             >
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center gap-4">
-                  <div className="p-3 bg-blue-500/10 rounded-xl text-blue-400 group-hover:scale-110 transition-transform duration-300">
-                    <LangIcon size={24} />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300">{lang.name}</h4>
-                    <span className="text-xs font-bold text-blue-400 uppercase tracking-widest">{lang.level}</span>
-                  </div>
-                </div>
+              <div className="flex items-center justify-between mb-4">
+                <h4 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors duration-300">{lang.name}</h4>
+                <span className="text-[11px] font-semibold text-blue-400 uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/20">{lang.level}</span>
               </div>
 
               <div className="relative h-2 bg-slate-800 rounded-full overflow-hidden">
